@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Proje.Aktif.SiteAyar.site_adi | @ViewBag.title </title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="abstract" content="@Proje.Aktif.SiteAyar._abstract" />
+    <meta name="author" content="info@ceoweb.net" />
+    <meta name="copyright" content="@Proje.Aktif.SiteAyar.site_adi Tüm Hakları Saklıdır. @DateTime.Now.Year" />
+    <meta name="description" content="@Proje.Aktif.SiteAyar.description" />
+    <meta name="keywords" content="@Proje.Aktif.SiteAyar.keywords" />
+    <meta name="robots" content="Index,follow" />
+    <meta http-equiv="refresh" content="300" />
+
+    <!-- include the site stylesheet -->
+    <link href="https://fonts.googleapis.com/css?family=Arizonia%7COpen+Sans:300,300i,400,400i,600,700,800%7CRoboto:300,400,500,700" rel="stylesheet">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/plugins.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/icofont.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/colors.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+
+
+</head>
+<body>
+    <!-- main container of all the page elements -->
+    <div id="wrapper">
+        <!-- header of the page -->
+        <header id="header" class="style2">
+            <!-- header area of the page -->
+            <div class="header-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="contact-list list-unstyled">
+                                <li><i class="fas fa-envelope"></i><a href="mailto:@Proje.Aktif.SiteAyar.mail"> @Proje.Aktif.SiteAyar.mail</a></li>
+                                <li><i class="fas fa-phone-alt"></i><a href="tel:@Proje.Aktif.SiteAyar.telefon1"> @Proje.Aktif.SiteAyar.telefon1</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Proje.Aktif.SiteAyar.kayarlogo_aktif != false)
+            {
+                <div class="client-sec bg-grey">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 line-box">
+                                <!-- client logo of the page -->
+                                <ul class="list-unstyled client-logo line">
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- header holder of the page -->
+            <div class="header-holder">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- logo of the page -->
+                            <div class="logo">
+                                <a href="/Home/Index"> <h1 style="font-size: 35px; color: white;">@Proje.Aktif.SiteAyar.site_adi</h1></a>
+                            </div>
+                            <a href="#" class="nav-opener text-center md-round"><i class="fa fa-bars"></i></a>
+                            <!-- nav of the page -->
+                            <nav id="nav">
+                                <ul class="list-unstyled">
+                                    <li class="@(ViewBag.title == "Anasayfa" ? "active":"")">
+                                        <a href="/Home/Index">Anasayfa</a>
+                                    </li>
+                                    <li class="@(ViewBag.title == "Ürünler" ? "active":"")">
+                                        <a href="/Home/Urunler">Ürünler</a>
+                                    </li>
+                                    <li class="@(ViewBag.title == "İletişim" ? "active":"")"><a href="/Home/iletisim">İletişim</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main of the page -->
+        @if (ViewBag.Title == "Anasayfa" || ViewBag.Title == "Ürün")
+        {
+
+        }
+        else
+        {
+            <main id="main">
+                <!-- banner of the page -->
+                <section class="banner bg-full overlay" style="background-image: url(../..@Proje.Aktif.SiteAyar.background);">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h1 class="main-heading3 text-uppercase">@ViewBag.title</h1>
+                                <!-- breadcrumbs of the page -->
+                                <nav class="breadcrumbs text-center">
+                                    <ul class="list-unstyled">
+                                        <li><a href="/">Anasayfa</a></li>
+                                        <li>></li>
+                                        <li><a href="#">@ViewBag.Title</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- shop detail of the page -->
+            </main>
+
+        }
+        @if (Proje.Aktif.SiteAyar.telefon3 == null || Proje.Aktif.SiteAyar.telefon3 == "" || Proje.Aktif.SiteAyar.telefon3 == " ")
+        {
+
+        }
+        else
+        {
+            <!-- GetButton.io widget -->
+            <script type="text/javascript">
+            (function () {
+                var options = {
+                    whatsapp: "@Proje.Aktif.SiteAyar.telefon3", // WhatsApp number
+                    call_to_action: "Whatsapp Destek", // Call to action
+                    position: "left", // Position may be 'right' or 'left'
+                };
+                var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+                var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+                s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+                var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+            })();
+            </script>
+            <!-- /GetButton.io widget -->
+        }
+
+        @RenderBody()
+        <!-- footer of the page -->
+        <footer id="footer">
+            @if (Proje.Aktif.SiteAyar.kayarlogo_aktif != false)
+            {
+                <div class="client-sec bg-grey">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 line-box">
+                                <!-- client logo of the page -->
+                                <ul class="list-unstyled client-logo line">
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                    <li><a href="/Home/Index"><img src="@Proje.Aktif.SiteAyar.logo" alt="logo" class="img-responsive"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- footer holder of the page -->
+            <div class="footer-holder">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <h3 class="text-uppercase">Menu</h3>
+                            <ul class="list-unstyled contact-list">
+                                <li><a href="/Home/Index">Anasayfa</a></li>
+                                <li><a href="/Home/Urunler">Ürünler</a></li>
+                                <li><a href="/Home/iletisim">İletişim</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <h3 class="text-uppercase">İletişim</h3>
+                            <!-- Contact list of the page -->
+                            <ul class="list-unstyled contact-list">
+                                <li>
+                                    <span class="icon ti-email"></span>
+                                    <a href="mailto:@Proje.Aktif.SiteAyar.mail">@Proje.Aktif.SiteAyar.mail</a>
+                                </li>
+                                @if (Proje.Aktif.SiteAyar.telefon1 != null && Proje.Aktif.SiteAyar.telefon1 != "")
+                                {
+                                    <li>
+                                        <span class="icon ti-headphone-alt"></span>
+                                        <a href="tel:@Proje.Aktif.SiteAyar.telefon1">@Proje.Aktif.SiteAyar.telefon1</a>
+                                    </li>
+                                }
+                                @if (Proje.Aktif.SiteAyar.telefon2 != null && Proje.Aktif.SiteAyar.telefon2 != "")
+                                {
+                                    <li>
+                                        <span class="icon ti-headphone-alt"></span>
+                                        <a href="tel:@Proje.Aktif.SiteAyar.telefon2">@Proje.Aktif.SiteAyar.telefon2</a>
+                                    </li>
+                                }
+                                @if (Proje.Aktif.SiteAyar.telefon3 != null && Proje.Aktif.SiteAyar.telefon3 != "")
+                                {
+                                    <li>
+                                        <span class="icon ti-headphone-alt"></span>
+                                        <a href="tel:@Proje.Aktif.SiteAyar.telefon3">@Proje.Aktif.SiteAyar.telefon3</a>
+                                    </li>
+                                }
+
+                                <li>
+
+                                    <address><span class="icon ti-location-pin"></span>@Proje.Aktif.SiteAyar.adres</address>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <h3 class="text-uppercase">Çalışma Saatleri</h3>
+                            <!-- Hour list of the page -->
+                            <ul class="list-unstyled hour-list">
+                                <li>@Proje.Aktif.SiteAyar.iletisim_saat</li>
+                                <li>@Proje.Aktif.SiteAyar.iletisim_haftaici</li>
+                                <li>@Proje.Aktif.SiteAyar.iletisim_cumartesi</li>
+                                <li>@Proje.Aktif.SiteAyar.iletisim_pazar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer area of the page -->
+            <div class="footer-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 text-center">
+                            <p>© @DateTime.Now.Year @Proje.Aktif.SiteAyar.site_adi All Rights Reserved.<i class="fad fa-heart"></i> Design by <a href="https://ceoweb.net/">ceoweb</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- back top of the page -->
+        <span id="back-top" class="text-center md-round fa fa-caret-up"></span>
+        <!-- loader of the page -->
+        <div id="loader" class="loader-holder">
+            <div class="block"><img src="~/Content/images/svg/hearts.svg" width="100" alt="loader"></div>
+        </div>
+    </div>
+    <!-- include jQuery -->
+    <script src="~/Content/js/jquery.js"></script>
+    <!-- include jQuery -->
+    <script src="~/Content/js/plugins.js"></script>
+    <!-- include jQuery -->
+    <script src="~/Content/js/jquery.main.js"></script>
+</body>
+</html>

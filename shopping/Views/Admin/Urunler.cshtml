@@ -1,0 +1,155 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using shopping.App_Start
+@model shopping.Models.ViewModel
+@{
+    ViewBag.Title = "Ürünler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@if (TempData["UrunSilindi"] != null)
+{
+
+
+    <script>
+        Swal.fire("Ürün", "Silindi", "success")
+    </script>
+}
+@if (TempData["UrunGuncellendi"] != null)
+{
+
+
+    <script>
+        Swal.fire("Ürün", "Güncellendi", "success")
+    </script>
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Tarih: @DateTime.Now.ToLongDateString()</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Ürün İsmi/Kodu</th>
+                    <th>Ürün Resmi</th>
+                    <th>Ürün Açıklaması</th>
+                    <th>Kategori Adı</th>
+                    <th>Aktif Durumu</th>
+                    <th>Son Düzenlenme Tarihi</th>
+                    <th>Son Düzenleyen / Ekleyen Admin</th>
+                    <th>Düzenle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.uruns)
+                {
+                    <tr>
+                        <td>@item.isim<p>(#@item.urunkodu)</p></td>
+                        @if (item.kapakresim == null || item.kapakresim == "")
+                        {
+                            <td><i class="text-red fas fa-times"></i></td>
+                        }
+                        else
+                        {
+                            <td><img src="@item.kapakresim" alt="@item.isim" width="100" height="100"></td>
+                        }
+
+                        <td>
+                            <button type="button" clmodalass="btn btn-default" data-toggle="modal" data-target="#modal_@item.urunID">
+                                Açıklama
+                            </button>
+                            <div class="modal fade" id="modal_@item.urunID">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Açıklama</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>@Html.Raw(item.aciklama)&hellip;</p>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                        </td>
+                        <td>@item.Kategoriler.adi</td>
+                        <td>
+                            @if (item.aktif == true)
+                            {
+                                <i class="text-green fas fa-check"></i>
+                            }
+                            else
+                            {
+                                <i class="text-red fas fa-times"></i>
+                            }
+                        </td>
+                        <td>@item.tarih</td>
+                        <td>@item.Admin.adi_soyadi</td>
+
+
+
+                        <td>
+                            <a href="/UrunDuzenle/@seo.Seo.AdresDuzenle(item.isim)-@item.urunID"><button type="button" class="btn btn-primary">Güncelle</button></a>
+
+
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#sil_@item.urunID">
+                                Sil
+                            </button>
+                            <div class="modal fade" id="sil_@item.urunID">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Açıklama</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Ürünü Silmek İstiyor musunuz ?</h4>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+                                            @Html.ActionLink("Sil", "Sil", new { item.urunID }, new { @class = "btn btn-danger" })
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Ürün İsmi/Kodu</th>
+                    <th>Ürün Resmi</th>
+                    <th>Ürün Açıklaması</th>
+                    <th>Kategori Adı</th>
+                    <th>Aktif Durumu</th>
+                    <th>Son Düzenlenme Tarihi</th>
+                    <th>Son Düzenleyen / Ekleyen Admin</th>
+                    <th>Düzenle</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

@@ -1,0 +1,18 @@
+﻿@using shopping.Models
+@model siteAyar
+@{ 
+    ViewBag.title = "Hata";
+}
+<section class="error-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h2>HATA</h2>
+                <strong class="txt">Bilinmeyen Bir Hata Meydana Geldi !</strong>
+                <p>Sorununuzu Bizlere Bildirerek Yardımcı Olabilirsiniz</p>
+                <a href="/Home/Index" class="btn text-center text-uppercase md-round">Anasayfa'ya Dön</a>
+                <a href="mailto:@Model.mail" class="btn text-center text-uppercase md-round">Bildir</a>
+            </div>
+        </div>
+    </div>
+</section>

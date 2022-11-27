@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Anasayfa";
+}
+
+@using shopping.Models
+@model SiteAyarViewModel
+
+
+<main id="main">
+    <!-- main slider of the page -->
+    <section class="main-slider slider2">
+        @foreach (var item in Model.Slider)
+        {
+            if (item.aktif == true)
+            {
+
+                <!-- slide of the page -->
+                <div class="slide bg-full overlay" style="background-image: url(../..@item.resim)">
+                    <div class="caption text-center">
+                        <span class="title text-uppercase">@item.slider_baslik</span>
+                        <h1 class="text-uppercase">@item.slider_yazi</h1>
+                        <div class="btn-holder">
+                            <a href="/Home/Urunler" class="btn active text-center text-uppercase">Ürünler</a>
+                            <a href="/Home/iletisim" class="btn text-center text-uppercase">İletişim</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </section>
+
+    <!-- abt sec of the page -->
+    <section class="abt-sec container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+                <h2 class="main-heading text-uppercase">@Proje.Aktif.SiteAyar.hakkimizda_baslik</h2>
+                <p>@Proje.Aktif.SiteAyar.hakkimizda</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                <div class="img-holder">
+                    <img src="@Proje.Aktif.SiteAyar.hakkimizda_resim" alt="image description" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- choose sec of the page -->
+    <section class="choose-sec container style2">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="img-holder">
+                    <div class="img-col">
+                        <a href="@Proje.Aktif.SiteAyar.galeri_resim1" target="_blank">
+                            <img src="@Proje.Aktif.SiteAyar.galeri_resim1" alt="image desciption" class="img-responsive">
+                            </a>
+                    </div>
+                    <div class="img-col">
+                        <a href="@Proje.Aktif.SiteAyar.galeri_resim2" target="_blank">
+                            <img src="@Proje.Aktif.SiteAyar.galeri_resim2" alt="image desciption" class="img-responsive">
+                            </a>
+                    </div>
+                </div>
+                <div class="img-holder">
+                    <div class="img-col">
+                        <a href="@Proje.Aktif.SiteAyar.galeri_resim3" target="_blank">
+                            <img src="@Proje.Aktif.SiteAyar.galeri_resim3" alt="image description" class="img-responsive">
+                            </a>
+                    </div>
+                    <div class="img-col">
+                        <a href="@Proje.Aktif.SiteAyar.galeri_resim4" target="_blank">
+                            <img src="@Proje.Aktif.SiteAyar.galeri_resim4" alt="image description" class="img-responsive">
+                            </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <ul class="list-unstyled choose-list">
+                    <li>
+                        <span class="icon"><i class="fad fa-thumbs-up"></i></span>
+                        <div class="txt-holder">
+                            <h4 class="text-uppercase">Güven</h4>
+                            <p>@Proje.Aktif.SiteAyar.yazi1</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fad fa-thumbs-up"></i></span>
+                        <div class="txt-holder">
+                            <h4 class="text-uppercase">Memnuniyet</h4>
+                            <p>@Proje.Aktif.SiteAyar.yazi2</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fad fa-thumbs-up"></i></span>
+                        <div class="txt-holder">
+                            <h4 class="text-uppercase">Kalite</h4>
+                            <p>@Proje.Aktif.SiteAyar.yazi3</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- client sec of the page -->
+</main>

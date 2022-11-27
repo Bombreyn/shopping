@@ -1,0 +1,3390 @@
+ /*
+Theme Name: VICIN
+Author: Timon Theme
+Author URI: https://themeforest.net/user/markhorthemes
+Version: 1
+Description: Base theme for HTML5
+Text Domain: base
+Tags: one-column, two-columns, three-columns
+Theme URI: http://markhorthemes.com/html/demo/vicin/
+*/
+
+
+/*------------------------------------------------------------------
+
+1. import files / import files
+2. Body / body
+3. Wrapper / #wrapper
+4. Header / #header
+5. Logo / .logo
+6. Nav / #nav
+7. Nav Active / .nav-active
+8. Main / #main
+9. Main slider / .main-slider
+10. Banner / .banner
+11. Btn / .btn
+12. Main Heading / .main-heading
+13. Main Heading2 / .main -heading2
+14. Main Heading3 / .main-heading3
+15. Socail Network / .socail-network
+16. Service Sec / .service-sec
+17. Service Detail / .service-detail
+18. Project Sec / .project-sec
+19. Project Detail / .project-detail
+20. Choose Sec / .choose-sec
+21. Help Sec / .help-sec
+22. Blog Sec / .blog-sec
+23. Twocolumns / .twocolumns
+24. Content / #content
+25. Sidebar / #sidebar
+26. Tesimonail Sec / .testimonail-sec
+27. Client Sec / .client-sec
+28. Abt Sec / .abt-sec
+29. Promo Box / .promo-box
+30. Team Sec / .team-sec
+31. Widget / .widget
+32. Content Sec / .content-sec
+33. Map Sec / .map-sec
+34. Comments Block / .comments-block
+35. Comment Form / .comment-form
+36. Shop List / .shop-list
+37. Shop Detail / .shop-detail
+38. Error Page / .error-page
+39. Faq Sec / .faq-sec
+40. Signup Form / .signup-form
+41. Popup Holder / .popup-holder
+42. Work Sec / .work-sec
+43. Login Sec / .login-sec
+44. Footer / #footer
+45. Back Top / #back-top
+46. Loader Holder / .loader-holder
+
+-------------------------------------------------------------------*/
+
+
+// devices viewport width starts at:
+$breakpoints: (
+	xs-phone: 480px,
+	phone: 415px,
+	tablet: 768px,
+	desktop: 992px,
+	widescreen: 1200px
+);
+ 
+// keywords
+$media-expressions: (
+	'screen': 'screen',
+	'print': 'print',
+	'handheld': 'handheld',
+	'landscape': '(orientation: landscape)',
+	'portrait': '(orientation: portrait)',
+	'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+	'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+// ligatured operators ≥ ≤
+
+
+/*------------------------------------------------------------------
+1. import files / import files
+-------------------------------------------------------------------*/
+
+@import 'vendors/include-media';
+
+@import "bootstrap-custom";
+@import "vendors/bootstrap/variables";
+@import "vendors/bootstrap/mixins";
+
+@import 'base/mixins';
+@import 'base/helpers';
+
+
+/*------------------------------------------------------------------
+2. Body / body
+-------------------------------------------------------------------*/
+body{
+	font-weight: 400;
+	margin: 0;
+}
+.blue{
+	#footer{
+		h3{ &:before{ background: $clr-12; } }
+		.contact-list{
+			a{ &:hover{ color: $clr-12; } }
+		}
+		.subscribe-form{
+			button{ &:hover{ color: $clr-12; } }
+		}
+		.socail-network{ a{ &:hover{ color: $clr-12; } } }
+	}
+	.socail-network{ a{ &:hover{ color: $clr-12; } } }
+}
+a{
+    &:hover,
+    &:focus,
+    &.active{
+        text-decoration: none;
+        outline: none;
+    }
+}
+.overlay{
+	position: relative;
+	z-index: 1;
+	&:before{
+		@include element(0, 0, 0, 0);
+		background: rgba(0, 0, 0, 0.7);
+	}
+}
+.bg-full{
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+.bg-parallax{
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+.pad-t{ padding-top: 72px; }
+.box-shadow{ box-shadow: 0 12px 18px rgba(0, 0, 0, 0.1); }
+.round{border-radius: 100%;}
+.md-round{border-radius: 5px;}
+.lg-round{border-radius: 40px;}
+.bg-light-grey{ background: $clr-2; }
+.bg-grey{ background: $clr-11; }
+.js-tab-hidden {
+	display:block !important;
+	left:-9999px !important;
+	position: absolute !important;
+	top:-9999px !important;
+}
+/*------------------------------------------------------------------
+3. Wrapper / #wrapper
+-------------------------------------------------------------------*/
+#wrapper{ @extend %boxreset; }
+/*------------------------------------------------------------------
+4. Header / #header
+-------------------------------------------------------------------*/
+#header{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 3;
+	@extend %clearfix;
+	&.style2{
+		.header-area{ padding: 11px 0; }
+		.contact-list{
+			font-weight: 600;
+			.icon{
+				font-size: 14px;
+				margin: 0 11px 0 1px;
+				color: $clr-4;
+			}
+		}
+	}
+	&.style3{
+		.header-holder{ background: $white; }
+		.contact-list{
+			font-weight: 600;
+			.icon{
+				font-size: 14px;
+				margin: 0 11px 0 1px;
+				color: $clr-4;
+			}
+		}
+		#nav{
+			ul{ > li{ > a{ color: $clr-4; } } }
+		}
+	}
+	&.style4{
+		.contact-list{
+			.icon{ color: $clr-4; }
+		}
+		.header-holder{ padding: 43px 0 30px; }
+		#nav{
+			ul{
+				> li{
+					> a{
+						color: $clr-4;
+						&:hover{
+							color: $clr-12;
+						}
+					}
+				}
+				.active{ > a{ color: $clr-12; } }
+			}
+			.drop-down{
+				> li{
+					> a{
+						color: $clr-4;
+						&:hover{ color: $clr-12; }
+					}
+				}
+			}
+		}
+	}
+	.header-area{
+		overflow: hidden;
+		background: $clr-3;
+		padding: 7px 0;
+	}
+	.header-holder{
+		@extend %clearfix;
+		padding: 33px 0 30px;
+	}
+	.contact-list{
+		float: left;
+		overflow: hidden;
+		margin: 0;
+		color: $clr-4;
+		li{
+			float: left;
+			margin: 0 22px 0 0;
+		}
+		a{
+			transition: all 0.25s linear;
+			color: $clr-4;
+			letter-spacing: 1px;
+		}
+		.icon{
+			font-size: 12px;
+			margin: 0 5px 0 0;
+		}
+	}
+	.socail-network{ float: right; }
+	.sign-up{
+		overflow: hidden;
+		margin: 0;
+		float: right;
+		color: $clr-4;
+		font-weight: 600;
+		padding: 1px 11px 0 0;
+		li{
+			float: left;
+			margin: 0 0 0 28px;
+		}
+		a{
+			display: block;
+			color: $clr-4;
+			transition: all 0.25s linear;
+			&:hover{
+				color: $white;
+			}
+		}
+		.fa{
+			font-size: 16px;
+		}
+	}
+	.nav-opener{
+		@include font(20px, 30px);
+		color: $white;
+		@include size(40px, 40px);
+		float: right;
+		padding: 5px;
+		&.opener2{ background: $clr-12; }
+	}
+}
+/*------------------------------------------------------------------
+5. Logo / .logo
+-------------------------------------------------------------------*/
+.logo{
+	width: 105px;
+	float: left;
+	margin: 0 10px 0 0;
+}
+/*------------------------------------------------------------------
+6. Nav / #nav
+-------------------------------------------------------------------*/
+#nav{
+	font-weight: 700;
+	float: right;
+	color: $white;
+	@extend %clearfix;
+	text-align: right;
+	ul{
+		margin: 0;
+		text-transform: uppercase;
+		> li{
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 0 0 44px;
+			position: relative;
+			&:hover{
+				padding-bottom: 35px;
+				margin-bottom: -35px;
+				.drop-down{
+					opacity: 1;
+					visibility: visible;
+					transform: rotateX(0);
+				}
+			}
+			> a{
+				color: $white;
+				display: block;
+				transition: all 0.25s linear;
+			}
+		}
+	}
+	.drop-down{
+		position: absolute;
+		left: -76px;
+		top: 100%;
+		color: $clr-4;
+		font-weight: 600;
+		text-transform: uppercase;
+		min-width: 200px;
+		text-align: left;
+		opacity: 0;
+		visibility: hidden;
+		padding: 11px 0 15px;
+		background: $white;
+		transition: all 0.25s linear;
+		transform: rotateX(90deg);
+		> li{
+			display: block;
+			overflow: hidden;
+			margin: 0;
+			> a{
+				display: block;
+				padding: 5px 28px;
+				color: $clr-4;
+				transition: all 0.25s linear;
+			}
+		}
+	}
+}
+/*------------------------------------------------------------------
+7. Nav Active / .nav-active
+-------------------------------------------------------------------*/
+.nav-active{
+	#nav{
+		opacity: 1;
+		visibility: visible;
+	}
+}
+/*------------------------------------------------------------------
+8. Main / #main
+-------------------------------------------------------------------*/
+#main{ overflow: hidden; }
+/*------------------------------------------------------------------
+9. Main slider / .main-slider
+-------------------------------------------------------------------*/
+.main-slider{
+	overflow: hidden;
+	&.slider2{
+		.slide{
+			min-height: 998px;
+			padding-top: 387px;
+			h1{ margin: 0 0 15px; }
+		}
+	}
+	&.slider3{
+		.slide{
+			min-height: 800px;
+			padding-top: 365px;
+			@include font(24px, 26px);
+			h1{
+				@include font(48px, 50px);
+				margin: 0 0 20px;
+			}
+			p{ margin: 0 0 57px; }
+		}
+	}
+	&.slider4{
+		.slide{
+			min-height: 900px;
+			padding-top: 306px;
+			@include font(14px, 24px);
+			color: $clr-4;
+			h1{
+				@include font(36px, 48px);
+				color: $clr-12;
+				margin: 0 0 22px;
+			}
+		}
+		.slick-arrow{ display: none !important; }
+		.slick-dots{
+			bottom: 330px;
+			button{
+				background: $clr-13;
+				&:hover{ background: $clr-12; }
+			}
+			.slick-active{ button{ background: $clr-12; } }
+		}
+	}
+	.slide{
+		@include font(16px, 30px);
+		color: $white;
+		min-height: 730px;
+		width: 100%;
+		padding: 215px 0 30px;
+		outline: none;
+		&.overlay{ &:before{ z-index: 0; } }
+		.caption{
+			@extend %clearfix;
+			position: relative;
+			z-index: 1;
+		}
+		.title{
+			@include font(14px, 16px);
+			font-weight: 700;
+			display: block;
+			margin: 0 0 9px;
+			letter-spacing: 8px;
+			opacity: 0;
+  			transform: translateY(-90px);
+  			transition: all 0.6s linear;
+		}
+		h1{
+			@include font(60px, 72px);
+			color: $white;
+			font-weight: 700;
+			margin: 0 0 54px;
+			opacity: 0;
+  			transform: translateY(-60px);
+  			transition: all 0.6s linear;
+		}
+		p{ margin: 0 0 52px; }
+		.btn-holder{
+			@extend %clearfix;
+			opacity: 0;
+  			transform: translateY(60px);
+  			transition: all 0.6s linear;
+			.btn{
+				margin: 0 10px 0 0;
+			}
+		}
+	}
+	.slick-active{
+		.title,
+		h1,
+		.btn-holder{
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	.slick-dots{
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		left: 50%;
+		bottom: 11px;
+		transform: translateX(-50%);
+		li{
+			float: left;
+			margin: 0 16px 0 0;
+		}
+		button{
+			@include size(9px, 9px);
+			background: $white;
+			padding: 0;
+			text-indent: -9999px;
+			overflow: hidden;
+			padding: 0;
+			border-radius: 100%;
+			border: none;
+			outline: none;
+			box-shadow: none;
+			transition: all 0.25s linear;
+		}
+	}
+	.slick-prev,
+	.slick-next{
+		background: none;
+		border: none;
+		text-indent: -9999px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 1;
+		&:before{
+			position: absolute;
+			left: 0;
+			top: 0;
+			font-family: 'themify';
+			@include font(20px, 22px);
+			color: $white;
+			text-indent: 0;
+			transition: all 0.25s linear;
+		}
+	}
+	.slick-prev{
+		left: 140px;
+		&:before{ content: "\e64a"; }
+	}
+	.slick-next{
+		right: 140px;
+		&:before{ content: "\e649"; }
+	}
+}
+/*------------------------------------------------------------------
+10. Banner / .banner
+-------------------------------------------------------------------*/
+.banner{
+	min-height: 400px;
+	padding: 229px 0 0;
+	.breadcrumbs{
+		@include font(12px, 14px);
+		color: $white;
+		overflow: hidden;
+		margin: 0;
+		ul{
+			overflow: hidden;
+			margin: 0;
+			li{
+				display: inline-block;
+				vertical-align: middle;
+			}
+			a{
+				color: $white;
+				display: block;
+				transition: all 0.25s linear;
+			}
+		}
+	}
+}
+/*------------------------------------------------------------------
+11. Btn / .btn
+-------------------------------------------------------------------*/
+.btn{
+	@include font(14px, 16px);
+	color: $white;
+	font-weight: 700;
+	display: inline-block;
+	vertical-align: middle;
+	border-width: 2px;
+	border-style: solid;
+	padding: 13px 34px;
+	border-radius: 0;
+	transition: all 0.25s linear;
+	&.active{
+		color: $clr-4;
+		box-shadow: none;
+		outline: none;
+		&:hover{ background: none; }
+	}
+	&:hover{ color: $clr-4; }
+}
+/*------------------------------------------------------------------
+12. Main Heading / .main-heading
+-------------------------------------------------------------------*/
+.main-heading{
+	@include font(30px, 36px);
+	font-weight: 700;
+	margin: 0 0 60px;
+	padding: 0 0 28px;
+	position: relative;
+	z-index: 1;
+	&:before{
+		@include element(auto, auto, 0, 50%);
+		transform: translateX(-50%);
+		@include size(70px, 4px);
+	}
+}
+/*------------------------------------------------------------------
+13. Main Heading2 / .main -heading2
+-------------------------------------------------------------------*/
+.main-heading2{
+	@include font(30px, 32px);
+	color: $clr-4;
+	font-weight: 700;
+	margin: 0 0 12px;
+}
+/*------------------------------------------------------------------
+14. Main Heading3 / .main-heading3
+-------------------------------------------------------------------*/
+.main-heading3{
+	@include font(36px, 38px);
+	color: $white;
+	font-weight: 700;
+	margin: 0 0 25px;
+	padding: 0 0 12px;
+	position: relative;
+	z-index: 1;
+	&:before{
+		@include element(auto, auto, 0, 50%);
+		transform: translateX(-50%);
+		@include size(60px, 2px);
+	}
+}
+/*------------------------------------------------------------------
+15. Socail Network / .socail-network
+-------------------------------------------------------------------*/
+.socail-network{
+	@include font(14px, 24px);
+	color: $clr-4;
+	overflow: hidden;
+	margin: 0;
+	li{
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0 29px;
+	}
+	a{
+		display: block;
+		color: $clr-4;
+		transition: all 0.25s linear
+	}
+}
+/*------------------------------------------------------------------
+16. Service Sec / .service-sec
+-------------------------------------------------------------------*/
+.service-sec{
+	@extend %clearfix;
+	padding: 80px 0;
+	position: relative;
+	&.service2{
+		min-height: 400px;
+		padding: 112px 0 90px;
+		&.overlay{ &:before{ z-index: 0; } }
+		.service{
+			h2{
+				@include font(20px, 22px);
+				font-weight: 700;
+				margin: 0 0 15px;
+				a{
+					color: $white;
+					transition: all 0.25s linear;
+				}
+			}
+			p{ margin: 0;}
+		}
+	}
+	&.service3{
+		padding: 73px 0 92px;
+		.service{
+			color: $clr-1;
+			padding: 42px 40px 40px;
+			font-family: $font-family-sans-serif;
+			p{ margin: 0; }
+			h2{
+				color: $clr-1;
+				font-weight: 700;
+				font-family: $font-family-sans-serif;
+				margin: 0 0 14px;
+				a{
+					color: $clr-1;
+					transition: all 0.25s linear;
+				}
+			}
+		}
+	}
+	&.service4{
+		padding: 92px 15px 100px;
+		.header{
+			@include font(16px, 18px);
+			margin: 0 0 63px;
+		}
+		.main-heading2{ margin: 0 0 18px; }
+	}
+	&.service5{
+		min-height: inherit;
+		padding: 104px 0 0;
+		.service{
+			margin: 0 0 90px;
+			color: $clr-4;
+			h2{
+				@include font(20px, 22px);
+				color: $clr-4;
+				a{
+					color: $clr-4;
+					transition: all 0.25s linear;
+				}
+			}
+		}
+	}
+	.header{
+		@include font(16px, 26px);
+		color: $clr-1;
+		overflow: hidden;
+		margin: 0 0 71px;
+		p{ margin: 0;}
+	}
+	.service{
+		overflow: hidden;
+		font-family: $font-family-sans-serif2;
+		font-weight: 400;
+		line-height: 24px;
+		color: $white;
+		&:hover{
+			.over{ top: 67px; }
+			.read-more{
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+		&.overlay{ &:before{ z-index: 0; } }
+		.over{
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 84px;
+			z-index: 1;
+			padding: 0 30px;
+			transition: all 0.25s linear;
+		}
+		.img{
+			width: 77px;
+			margin: 0 auto 33px;
+			&.img2{
+				width: 61px;
+				margin-bottom: 24px;
+			}
+			&.img3{
+				width: 54px;
+				margin-bottom: 16px;
+			}
+			&.img4{
+				width: 71px;
+				margin-bottom: 16px;
+			}
+		}
+		p{ margin: 0 0 11px; }
+		h2{
+			@include font(18px, 20px);
+			font-family: $font-family-sans-serif2;
+			font-weight: 500;
+			color: $white;
+			margin: 0 0 9px;
+		}
+		.read-more{
+			@include font(12px, 14px);
+			font-family: $font-family-sans-serif;
+			font-weight: 700;
+			transition: all 0.25s linear;
+			opacity: 0;
+			visibility: hidden;
+			&:hover{ color: $white; }
+		}
+	}
+	.tabset{
+		@include font(16px, 18px);
+		color: $clr-4;
+		margin: 0;
+		border-right: 2px solid $clr-14;
+		li{
+			margin: 0 0 3px;
+		}
+		a{
+			display: block;
+			color: $clr-4;
+			padding: 11px 0 4px;
+			transition: all 0.25s linear;
+			&:hover{
+				border-right: 4px solid $clr-12;
+				margin: 0 -3px 0 0;
+				color: $clr-12;
+			}
+		}
+		.active{
+			border-right: 4px solid $clr-12;
+			color: $clr-12;
+			margin: 0 -3px 0 0;
+		}
+	}
+	.tab-content{
+		overflow: hidden;
+		.txt-holder{
+			float: left;
+			width: 52%;
+			line-height: 24px;
+			padding: 22px 33px 0 0;
+		}
+		h4{
+			@include font(18px, 20px);
+			color: $clr-4;
+			font-weight: 700;
+			margin: 0 0 16px;
+		}
+		p{ margin: 0 0 29px; }
+		.read-more{
+			text-decoration: underline;
+			color: $clr-4;
+			transition: all 0.25s linear;
+			&:hover{
+				text-decoration: none;
+				color: $clr-12;
+			}
+		}
+		.img-holder{
+			width: 48%;
+			float: left;
+		}
+	}
+}
+/*------------------------------------------------------------------
+17. Service Detail / .service-detail
+-------------------------------------------------------------------*/
+.service-detail{
+	overflow: hidden;
+	padding-top: 99px;
+	padding-bottom: 107px;
+	.img-holder{
+		width: 100%;
+		overflow: hidden;
+		margin: 0 0 20px;
+	}
+	h2{
+		@include font(24px, 36px);
+		font-weight: 600;
+		color: $clr-4;
+		margin: 0 0 20px;
+	}
+	.fst{
+		float: left;
+		width: 50%;
+		line-height: 24px;
+		padding: 0 15px 0 0;
+	}
+	.scd{
+		float: left;
+		width: 50%;
+		line-height: 24px;
+		padding: 0 0 0 15px;
+	}
+}
+/*------------------------------------------------------------------
+18. Project Sec / .project-sec
+-------------------------------------------------------------------*/
+.project-sec{
+	@extend %clearfix;
+	min-height: 536px;
+	&.style2{
+		min-height: inherit;
+		padding: 92px 0 71px;
+		.main-heading{
+			margin: 0 0 51px;
+		}
+	}
+	&.style3{
+		min-height: inherit;
+		padding: 58px 0 0;
+		.main-heading{
+			float: left;
+			padding: 0;
+			margin: 0;
+			&:before{ display: none; }
+		}
+		.filter-list{
+			float: right;
+			padding: 12px 0 0;
+			margin: 0 0 72px;
+			li{
+				margin: 0 0 0 60px;
+			}
+		}
+		.project-holder{
+			.col{
+				width: 25%;
+				margin: 0;
+				img{ width: 100%; }
+			}
+		}
+	}
+	&.style4{
+		padding: 92px 0 71px;
+		min-height: inherit;
+		.project-holder{
+			.col{
+				width: 25%;
+				margin: 0;
+				img{ width: 100%; }
+			}
+		}
+	}
+	.col{
+		width: 25%;
+		float: left;
+		overflow: hidden;
+		&.overlay{
+			&:before{
+				opacity: 0;
+				visibility: hidden;
+				z-index: 1;
+				transition: all 0.25s linear;
+			}
+		}
+		&:hover{
+			img{ transform: scale(1.1); }
+			&.overlay{
+				&:before{
+					opacity: 0.8;
+					visibility: visible;
+				}
+			}
+			.over{
+				opacity: 1;
+				visibility: visible;
+				.title,
+				.sub-title{
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		}
+		img{ transition: all 0.25s linear; }
+		.over{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+			visibility: hidden;
+			z-index: 2;
+			width: 100%;
+			transition: all 0.25s linear;
+			.title{
+				@include font(18px, 20px);
+				color: $clr-4;
+				display: block;
+				margin: 0 0 5px;
+				font-weight: 700;
+				opacity: 0;
+				transform: translateY(-60px);
+				transition: all 0.25s linear;
+				a{
+					color: $clr-4;
+					transition: all 0.25s linear;
+					&:hover{ color: $white; }
+				}
+			}
+			.sub-title{
+				@include font(16px, 18px);
+				color: $clr-4;
+				font-weight: 400;
+				display: block;
+				opacity: 0;
+				transform: translateY(60px);
+				transition: all 0.25s linear;
+			}
+		}
+	}
+	.filter-list{
+		@include font(16px, 18px);
+		color: $clr-10;
+		font-weight: 600;
+		overflow: hidden;
+		margin: 0 0 63px;
+		li{
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 60px 0 0;
+			text-transform: uppercase;
+		}
+		.active{ a{ color: $clr-4; } }
+		a{
+			color: $clr-10;
+			display: block;
+			transition: all 0.25s linear;
+			&:hover{ color: $clr-4; }
+		}
+	}
+	.project-holder{
+		.col{
+			width: 365px;
+			margin: 0 25px 29px 0;
+			overflow: hidden;
+			&.col2{ margin: 0 0 29px; }
+		}
+	}
+	.read-more{
+		@include font(14px, 16px);
+		font-weight: 700;
+		margin: 28px 0 0;
+		display: inline-block;
+		vertical-align: middle;
+		text-decoration: underline;
+		transition: all 0.25s linear;
+		&:hover{
+			color: $clr-4;
+			text-decoration: none;
+		}
+	}
+}
+/*------------------------------------------------------------------
+19. Project Detail / .project-detail
+-------------------------------------------------------------------*/
+.project-detail{
+	overflow: hidden;
+	padding-top: 95px;
+	padding-bottom: 90px;
+	&.style2{
+		padding-top: 100px;
+		padding-bottom: 20px;
+		.project-list{
+			border: none;
+			margin: 0 0 83px;
+			li{
+				width: 100%;
+				float: none;
+			}
+		}
+		.img-holder{ margin: 0 0 55px; }
+		h3{ margin: 0 0 27px; }
+		.pagination{
+			padding: 26px 0 0;
+			border-top: 1px solid $clr-14;
+		}
+		p{ margin: 0 0 22px;}
+	}
+	h3{
+		@include font(24px, 26px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 35px;
+	}
+	h4{
+		@include font(24px, 26px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 14px;
+	}
+	.project-list{
+		overflow: hidden;
+		margin: 0 0 57px;
+		padding: 0 0 36px;
+		border-bottom: 1px solid $clr-14;
+		li{
+			width: 33.33%;
+			float: left;
+			margin: 0 0 17px;
+			color: $clr-1;
+		}
+		strong{
+			font-weight: 700;
+			color: $clr-4;
+		}
+	}
+	p{ margin: 0 0 56px; }
+	.img-holder{
+		width: 100%;
+		overflow: hidden;
+		margin: 0 0 30px;
+		.img-col{
+			width: 31.13%;
+			margin: 0 0 0 30px;
+			float: left;
+			overflow: hidden;
+			&:first-child{
+				margin: 0;
+				width: 31.6%;
+			}
+			&.overlay{
+				&:before{
+					opacity: 0;
+					visibility: hidden;
+					z-index: 1;
+					transition: all 0.25s linear;
+				}
+			}
+			&:hover{
+				img{ transform: scale(1.1); }
+				&.overlay{
+					&:before{
+						opacity: 0.8;
+						visibility: visible;
+					}
+				}
+				.ti-zoom-in{
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+			img{ transition: all 0.25s linear; }
+			.ti-zoom-in{
+				@include font(24px, 26px);
+				color: $white;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				z-index: 2;
+				opacity: 0;
+				visibility: hidden;
+				transform: translate(-50%, -50%);
+				transition: all 0.25s linear;
+			}
+		}
+	}
+	.pagination{
+		overflow: hidden;
+		padding: 67px 0 0;
+		.prev{
+			@include font(14px, 16px);
+			color: $clr-1;
+			float: left;
+			padding: 4px 0 0;
+			text-decoration: underline;
+			transition: all 0.25s linear;
+			&:hover{ text-decoration: none; }
+		}
+		.next{
+			@include font(14px, 16px);
+			color: $clr-1;
+			float: right;
+			padding: 4px 0 0;
+			text-decoration: underline;
+			transition: all 0.25s linear;
+			&:hover{ text-decoration: none; }
+		}
+		.ti-layout-grid2{
+			@include font(18px, 22px);
+			color: $clr-1;
+			transition: all 0.25s linear;
+		}
+	}
+}
+/*------------------------------------------------------------------
+20. Choose Sec / .choose-sec
+-------------------------------------------------------------------*/
+.choose-sec{
+	overflow: hidden;
+	padding-bottom: 96px;
+	&.style2{ padding-top: 92px; }
+	.img-holder{
+		width: 270px;
+		float: left;
+		&:first-child{
+			width: 300px;
+			padding: 0 10px 0 0;
+		}
+		.img-col{
+			width: 100%;
+			&:first-child{ margin: 0 0 10px; }
+		}
+	}
+	.choose-list{
+		overflow: hidden;
+		margin: 0;
+		padding: 40px 70px 0;
+		li{
+			overflow: hidden;
+			margin: 0 0 38px;
+		}
+		.icon{
+			@include font(30px, 40px);
+			float: left;
+			width: 9%;
+		}
+		.txt-holder{
+			width: 86%;
+			padding: 0 0 0 20px;
+			overflow: hidden;
+			float: left;
+		}
+		h4{
+			@include font(18px, 20px);
+			color: $clr-4;
+			font-weight: 700;
+			margin: 0 0 15px;
+		}
+		p{ margin: 0; }
+	}
+}
+/*------------------------------------------------------------------
+21. Help Sec / .help-sec
+-------------------------------------------------------------------*/
+.help-sec{
+	@extend %clearfix;
+	min-height: 460px;
+	@include font(16px, 28px);
+	color: $clr-1;
+	.holder{
+		overflow: hidden;
+		padding: 115px 0 0;
+	}
+	.main-heading{
+		padding: 0;
+		margin: 0 0 10px;
+		&:before{ display: none; }
+	}
+	p{ margin: 0 0 41px; }
+	.img-holder{
+		width: 338px;
+		margin: -40px 0 0 77px;
+	}
+}
+/*------------------------------------------------------------------
+22. Blog Sec / .blog-sec
+-------------------------------------------------------------------*/
+.blog-sec{
+	overflow: hidden;
+	padding-bottom: 80px;
+	&.style2{
+		padding-top: 93px;
+		.main-heading{ margin: 0 0 57px; }
+		.blog{
+			margin: 0 0 40px;
+			.img-holder{
+				width: 35%;
+				float: left;
+			}
+			.txt-holder{
+				width: 65%;
+				float: left;
+				border: none;
+				padding: 5px 0 0 31px;
+			}
+			p{ margin: 0 0 16px; }
+			.read-more{ &:hover{ color: $clr-4; } }
+		}
+	}
+	&.style3{
+		padding-top: 71px;
+		padding-bottom: 39px;
+		.main-heading{
+			padding: 0;
+			margin: 0 0 53px;
+			&:before{ display: none; }
+		}
+	}
+	&.style4{
+		padding-top: 93px;
+		padding-bottom: 100px;
+		border-bottom: 1px solid $clr-14;
+		.blog{
+			.comment-nav{
+				a{
+					color: $clr-12;
+				}
+			}
+			.img-holder{
+				.over{
+					span{
+						&:before{ background: $clr-12; }
+						&:after{ background: $clr-12; }
+					}
+				}
+			}
+		}
+	}
+	.main-heading{ margin: 0 0 51px; }
+	.blog{
+		overflow: hidden;
+		&:hover{
+			.img-holder{
+				&:before{
+					left: 10px;
+					top: 10px;
+					height: calc(100% - 20px);
+					width: calc(100% - 20px);
+				}
+				.over{
+					span{ opacity: 1; }
+				}
+			}
+		}
+		.img-holder{
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+			&:before{
+				@include element(50%, auto, auto, 50%);
+				@include size(0, 0);
+				z-index: 0;
+				background: rgba(0, 0, 0, 0.3);
+				transition: all 0.25s linear;
+			}
+			.over{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				a{
+					padding: 10px;
+					&:hover{
+						span{
+							&:before{
+								height: 40px;
+								top: -8px;
+							}
+							&:after{
+								left: -10px;
+								width: 40px;
+							}
+						}
+					}
+				}
+				span{
+					opacity: 0;
+					transition: all 0.25s linear;
+					&:before{
+						@include element(2px, auto, auto, 50%);
+						z-index: 0;
+						@include size(1px, 20px);
+						transition: all 0.25s linear;
+					}
+					&:after{
+						@include element(50%, auto, auto, 0);
+						z-index: 0;
+						@include size(20px, 1px);
+						transition: all 0.25s linear;
+					}
+				}
+			}
+		}
+		.txt-holder{
+			overflow: hidden;
+			padding: 24px 35px 22px 28px;
+			border: 1px solid $clr-6;
+			border-top: none;
+		}
+		h3{
+			@include font(16px, 24px);
+			color: $clr-4;
+			font-weight: 700;
+			margin: 0 0 7px;
+			a{
+				color: $clr-4;
+				display: block;
+				transition: all 0.25s linear;
+			}
+		}
+		.comment-nav{
+			overflow: hidden;
+			margin: 0 0 9px;
+			color: $clr-5;
+			li{
+				float: left;
+				margin: 0 4px 0 0;
+			}
+			a{
+				display: block;
+				transition: all 0.25s linear;
+				&:hover{ color: $clr-5; }
+			}
+		}
+		p{ margin: 0 0 10px; }
+		.read-more{
+			@include font(12px, 14px);
+			color: $clr-4;
+			font-weight: 700;
+			transition: all 0.25s linear;
+			text-decoration: underline;
+			&:hover{ text-decoration: none; }
+		}
+	}
+	.header{
+		font-size: 16px;
+		overflow: hidden;
+		margin: 0 0 39px;
+		p{ margin: 0; }
+	}
+}
+/*------------------------------------------------------------------
+23. Twocolumns / .twocolumns
+-------------------------------------------------------------------*/
+.twocolumns{
+	overflow: hidden;
+	padding-top: 90px;
+	padding-bottom: 120px;
+}
+/*------------------------------------------------------------------
+24. Content / #content
+-------------------------------------------------------------------*/
+#content{
+	width: 68.3%;
+	float: left;
+	.post-blog{
+		overflow: hidden;
+		padding: 19px 0 0;
+		margin: 0 0 77px;
+		border-top: 1px solid $clr-14;
+		&:first-child{
+			border: none;
+			padding: 0;
+		}
+		&.post2{
+			line-height: 24px;
+			margin: 0 0 117px;
+			p{ margin: 0 0 25px; }
+		}
+		.img-holder{
+			width: 100%;
+			overflow: hidden;
+			margin: 0 0 22px;
+		}
+		.time{
+			color: $clr-13;
+			display: block;
+			margin: 0 0 18px;
+		}
+		h3{
+			@include font(24px, 26px);
+			color: $clr-4;
+			font-weight: 700;
+			margin: 0 0 14px;
+			a{
+				display: block;
+				color: $clr-4;
+				transition: all 0.25s linear;
+			}
+		}
+		p{ margin: 0 0 11px; }
+		.read-more{
+			color: $clr-4;
+			font-weight: 700;
+			text-decoration: underline;
+			transition: all 0.25s linear;
+			&:hover{ text-decoration: none; }
+		}
+		.comment-nav{
+			overflow: hidden;
+			margin: 0 0 20px;
+			color: $clr-13;
+			li{
+				float: left;
+				margin: 0 16px 0 0;
+			}
+			a{
+				display: block;
+				transition: all 0.25s linear;
+				.ti-bookmark{ margin: 0 1px 0 0; }
+				&:hover{ color: $clr-4; }
+			}
+		}
+	}
+	.nav-pagination{
+		@include font(16px, 18px);
+		color: $clr-4;
+		overflow: hidden;
+		margin: 0;
+		width: 370px;
+		.prev{
+			float: left;
+			margin: 0;
+			a{
+				padding: 0;
+				font-weight: 400;
+				text-decoration: underline;
+				transition: all 0.25s linear;
+				&:hover{
+					text-decoration: none;
+					background: none;
+				}
+			}
+		}
+		.next{
+			float: right;
+			margin: 0;
+			a{
+				padding: 0;
+				font-weight: 400;
+				text-decoration: underline;
+				transition: all 0.25s linear;
+				&:hover{
+					text-decoration: none;
+					background: none;
+				}
+			}
+		}
+		li{
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 0 0 5px;
+			a{
+				padding: 5px 9px;
+				border-radius: 2px;
+				display: block;
+				font-weight: 700;
+				transition: all 0.25s linear;
+				&:hover{ background: $clr-4; }
+			}
+		}
+		.active{ a{ background: $clr-4; } }
+	}
+}
+/*------------------------------------------------------------------
+25. Sidebar / #sidebar
+-------------------------------------------------------------------*/
+#sidebar{
+	width: 31.7%;
+	float: left;
+	padding: 0 0 0 68px;
+	margin: -6px 0 0;
+}
+/*------------------------------------------------------------------
+26. Tesimonail Sec / .testimonail-sec
+-------------------------------------------------------------------*/
+.testimonail-sec{
+	min-height: 350px;
+	overflow: hidden;
+	padding: 92px 0 30px;
+	&.style2{
+		padding: 76px 0 30px;
+		min-height: 360px;
+		.testimonail-slider{
+			padding: 0;
+			.slide{
+				@include font(14px, 24px);
+				font-style: italic;
+				color: $clr-4;
+				q{ margin: 0 0 21px; }
+				cite{
+					font-size: 14px;
+					margin: 0;
+					color: $clr-4;
+					font-style: normal;
+					span{
+						display: inline-block;
+						vertical-align: middle;
+						font-weight: 400;
+						font-style: italic;
+						color: $clr-4;
+					}
+				}
+			}
+			.slick-prev,
+			.slick-next{
+				background: none;
+				border: 1px solid $clr-4;;
+				text-indent: -9999px;
+				position: absolute;
+				top: 50%;
+				z-index: 1;
+				@include size(24px, 24px);
+				transform: translateY(-50%);
+				transition: all 0.25s linear;
+				&:before{
+					position: absolute;
+					left: 2px;
+					top: 0;
+					font-family: 'themify';
+					@include font(17px, 22px);
+					color: $clr-4;
+					text-indent: 0;
+					transition: all 0.25s linear;
+				}
+				&:hover{
+					background: $clr-12;
+					border-color: $clr-12;
+					&:before{ color: $white; }
+				}
+			}
+			.slick-prev{
+				left: 0;
+				&:before{ content: "\e64a"; }
+			}
+			.slick-next{
+				right: 0;
+				&:before{ content: "\e649"; }
+			}
+			.slick-dots{ display: none !important; }
+		}
+	}
+	.testimonail-slider{
+		overflow: hidden;
+		padding: 0 0 62px;
+		.slide{
+			@include font(20px, 30px);
+			color: $white;
+			font-weight: 400;
+			margin: 0;
+			padding: 0 140px;
+			border: none;
+			q{
+				display: block;
+				margin: 0 0 25px;
+				transform: translateY(-60px);
+				opacity: 0;
+				transition: all 0.50s linear;
+				&:before,
+				&:after{ display: none; }
+			}
+			cite{
+				@include font(16px, 18px);
+				color: $white;
+				font-weight: 700;
+				font-style: normal;
+				display: block;
+				margin: 0 0 9px;
+				transform: translateY(60px);
+				opacity: 0;
+				transition: all 0.50s linear;
+			}
+			span{
+				@include font(14px, 16px);
+				display: block;
+				font-weight: 400;
+				transform: translateY(80px);
+				opacity: 0;
+				transition: all 0.50s linear;
+			}
+			.img-holder{
+				width: 68px;
+				margin: 0 auto 22px;
+				overflow: hidden;
+				transform: translateY(-80px);
+				opacity: 0;
+				transition: all 0.50s linear;
+			}
+		}
+		.slick-active{
+			q,
+			cite,
+			span,
+			.img-holder{
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+		.slick-dots{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			left: 50%;
+			bottom: -15px;
+			transform: translateX(-50%);
+			li{
+				float: left;
+				margin: 0 16px 0 0;
+			}
+			button{
+				@include size(9px, 9px);
+				background: $clr-7;
+				padding: 0;
+				text-indent: -9999px;
+				overflow: hidden;
+				padding: 0;
+				border-radius: 100%;
+				border: none;
+				outline: none;
+				box-shadow: none;
+				transition: all 0.25s linear;
+				&:hover{ background: $white; }
+			}
+			.slick-active{ button{ background: $white; } }
+		}
+		.slick-prev,
+		.slick-next{
+			background: none;
+			border: none;
+			text-indent: -9999px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 1;
+			&:before{
+				position: absolute;
+				left: 0;
+				top: 0;
+				font-family: 'themify';
+				@include font(20px, 22px);
+				color: $white;
+				text-indent: 0;
+				transition: all 0.25s linear;
+			}
+		}
+		.slick-prev{
+			left: 0;
+			&:before{ content: "\e64a"; }
+		}
+		.slick-next{
+			right: 0;
+			&:before{ content: "\e649"; }
+		}
+	}
+}
+/*------------------------------------------------------------------
+27. Client Sec / .client-sec
+-------------------------------------------------------------------*/
+.client-sec{
+	overflow: hidden;
+	padding: 40px 0 34px;
+	.line-box{ overflow: hidden; }
+	.client-logo{
+		overflow: hidden;
+		margin: 0;
+		text-align: center;
+		li{
+			width: 240px;
+		}
+		a{ display: block; }
+	}
+}
+/*------------------------------------------------------------------
+28. Abt Sec / .abt-sec
+-------------------------------------------------------------------*/
+.abt-sec{
+	@include font(16px, 30px);
+	overflow: hidden;
+	padding-top: 74px;
+	padding-bottom: 82px;
+	&.style2{
+		padding-top: 107px;
+		padding-bottom: 10px;
+		.main-heading{
+			padding-top: 0;
+			margin: -4px 0 48px;
+		}
+	}
+	.main-heading{
+		padding-top: 4px;
+		margin: 0 0 48px;
+		&:before{
+			left: 0;
+			transform: none;
+		}
+	}
+	p{ margin: 0 0 34px; }
+	.read-more{
+		@include font(14px, 16px);
+		font-weight: 700;
+		text-decoration: underline;
+		transition: all 0.25s linear;
+		&:hover{
+			color: $clr-4;
+			text-decoration: none;
+		}
+	}
+	.img-holder{
+		float: right;
+		width: 310px;
+	}
+	.holder{
+		margin-bottom: 58px;
+	}
+}
+/*------------------------------------------------------------------
+29. Promo Box / .promo-box
+-------------------------------------------------------------------*/
+.promo-box{
+	overflow: hidden;
+	padding: 45px 0;
+	@include font(24px, 26px);
+	color: $clr-4;
+	text-transform: uppercase;
+	font-weight: 700;
+	&.style2{
+		padding: 25px 86px;
+		@include font(22px, 24px);
+		background: $clr-11;
+		margin-top: -50px;
+		position: relative;
+		p{ padding: 12px 0 0; }
+	}
+	&.style3{
+		padding: 27px 0;
+		color: $white;
+		background: $clr-12;
+		p{ padding: 10px 0 0; }
+		.btn{
+			background: $white;
+			color: $clr-12;
+			border: none;
+			border-radius: 5px;
+		}
+	}
+	p{
+		margin: 0;
+		padding: 9px 0 0;
+	}
+	.btn{
+		float: right;
+		background: $clr-4;
+		padding: 15px 31px;
+		&:hover{
+			color: $clr-4;
+			border-color: $clr-4;
+			background: none;
+		}
+	}
+	.call{
+		color: $white;
+		font-weight: 700;
+		padding: 12px 31px 14px 32px;
+		float: right;
+		background: $clr-12;
+		transition: all 0.25s linear;
+	}
+}
+/*------------------------------------------------------------------
+30. Team Sec / .team-sec
+-------------------------------------------------------------------*/
+.team-sec{
+	overflow: hidden;
+	padding: 160px 0 92px;
+	&.style2{
+		padding: 22px 0 92px;
+		.main-heading{
+			&:before{
+				left: 0;
+				transform: none;
+			}
+		}
+	}
+	&.style3{
+		padding: 92px 0 50px;
+		.main-heading2{ margin: 0 0 15px; }
+		.team-slider{
+			.team{
+				&:hover{
+					.over{
+						background: rgba(60, 174, 233, 0.8);
+					}
+				}
+				.over{
+					color: $white;
+					background: $clr-12;
+				}
+				.title{ color: $white; }
+				.socail-network{
+					a{
+						color: $white;
+						&:hover{ color: $clr-4; }
+					}
+				}
+			}
+		}
+	}
+	.team-slider{
+		.team{
+			position: relative;
+			overflow: hidden;
+			margin: 0 15px;
+			&:hover{
+				.over{
+					top: 0;
+					padding: 64px 31px 64px 41px;
+					text-align: left;
+					transform: translateY(0);
+				}
+				.title{ margin: 0 0 15px; }
+			}
+			.over{
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				padding: 20px;
+				z-index: 2;
+				color: $clr-4;
+				width: 100%;
+				text-align: center;
+				transform: translateY(161px);
+				transition: all 0.25s linear;
+			}
+			.title{
+				@include font(16px, 18px);
+				font-weight: 700;
+				color: $clr-4;
+				display: block;
+				margin: 0 0 20px;
+			}
+			p{ margin: 0 0 39px; }
+			.socail-network{
+				li{
+					margin: 0 0 0 31px;
+					&:first-child{ margin: 0; }
+				}
+				a{ &:hover{ color: $white; } }
+			}
+		}
+		.slick-prev,
+		.slick-next{
+			background: none;
+			border: none;
+			text-indent: -9999px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 1;
+			&:before{
+				position: absolute;
+				left: 0;
+				top: 0;
+				font-family: 'themify';
+				@include font(20px, 22px);
+				color: $black;
+				text-indent: 0;
+				transition: all 0.25s linear;
+			}
+		}
+		.slick-prev{
+			left: -119px;
+			&:before{ content: "\e64a"; }
+		}
+		.slick-next{
+			right: -119px;
+			&:before{ content: "\e649"; }
+		}
+	}
+	.header{
+		overflow: hidden;
+		margin: 0 0 53px;
+		p{ margin: 0; }
+	}
+}
+/*------------------------------------------------------------------
+31. Widget / .widget
+-------------------------------------------------------------------*/
+.widget{
+	overflow: hidden;
+	.side-nav{
+		@include font(14px, 16px);
+		font-weight: 700;
+		color: $clr-4;
+		margin: 0 0 0 70px;
+		border-left: 2px solid $clr-14;
+		li{
+			margin: 0 0 3px;
+		}
+		a{
+			display: block;
+			color: $clr-4;
+			padding: 4px 0 7px 28px;
+			transition: all 0.25s linear;
+			&:hover{
+				border-left-width: 2px;
+				border-left-style: solid;
+				margin: 0 0 0 -2px;
+			}
+		}
+	}
+	h3{
+		@include font(24px, 26px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 36px;
+	}
+	.widget-nav{
+		color: $clr-4;
+		line-height: 36px;
+		overflow: hidden;
+		margin: 0 0 46px;
+		li{ overflow: hidden; }
+		a{
+			display: block;
+			color: $clr-4;
+			transition: all 0.25s linear;
+		}
+		.ti-angle-right{ margin: 0 7px 0 0; }
+	}
+	.tags-list{
+		color: $clr-4;
+		overflow: hidden;
+		margin: 0;
+		li{
+			float: left;
+			margin: 0 0 15px 10px;
+		}
+		a{
+			display: block;
+			color: $clr-4;
+			padding: 3px 17px 3px 18px;
+			border: 1px solid $clr-4;
+			transition: all 0.25s linear;
+			&:hover{ background: $clr-4; }
+		}
+	}
+	.pro-list{
+		overflow: hidden;
+		margin: 0;
+		li{
+			overflow: hidden;
+			margin: 0 0 21px;
+		}
+		.img-holder{
+			width: 18%;
+			float: left;
+		}
+		.txt-holder{
+			width: 82%;
+			float: left;
+			color: $clr-1;
+			overflow: hidden;
+			padding: 2px 0 0 19px;
+		}
+		.name{
+			float: left;
+			font-weight: 400;
+			margin: 0 19px 0 0;
+			a{
+				color: $clr-1;
+				display: block;
+				transition: all 0.25s linear;
+			}
+		}
+		.price{
+			font-weight: 700;
+			float: left;
+		}
+		.header{ overflow: hidden; }
+		.rating-list{
+			font-size: 12px;
+			color: $clr-1;
+			overflow: hidden;
+			margin: 0;
+			padding: 0 0 0 2px;
+			li{
+				float: left;
+				margin: 0 2px 0 0;
+			}
+			a{
+				display: block;
+				color: $clr-1;
+				transition: all 0.25s linear;
+			}
+		}
+	}
+}
+/*------------------------------------------------------------------
+32. Content Sec / .content-sec
+-------------------------------------------------------------------*/
+.contact-sec{
+	overflow: hidden;
+	padding-top: 95px;
+	padding-bottom: 85px;
+	color: $clr-4;
+	&.style2{
+		padding-top: 40px;
+		padding-bottom: 0;
+		.main-heading2{ margin: 0 0 13px; }
+		.img-holder{ width: 100%; }
+		.contact-form{
+			.form-control{
+				border: 1px solid $clr-14;
+				padding: 10px 12px 10px 16px;
+				height: 44px;
+				margin: 0 0 22px;
+			}
+			textarea{
+				border: 1px solid $clr-14;
+				padding: 5px 12px 10px 16px;
+				min-height: 111px;
+				margin: 0;
+			}
+			.btn{
+				padding: 13px 40px;
+				border-color: $clr-12;
+				background: $clr-12;
+				color: $white;
+				&:hover{
+					background: none;
+					border-color: $clr-12;
+					color: $clr-12;
+				}
+			}
+		}
+	}
+	h3{
+		@include font(24px, 26px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 41px;
+	}
+	.marg{ margin: 0 0 14px; }
+	p{ margin: 0 0 43px; }
+	.contact-list{
+		overflow: hidden;
+		margin: 0 0 25px;
+		color: $clr-1;
+		padding: 0 0 12px;
+		position: relative;
+		&:before{
+			@include element(auto, auto, 0, 0);
+			@include size(60px, 1px);
+		}
+		li{
+			overflow: hidden;
+			margin: 0 0 10px;
+		}
+		.icon{
+			@include font(14px, 16px);
+			display: inline-block;
+			vertical-align: top;
+			margin: 5px 10px 0 0;
+		}
+		address{
+			display: inline-block;
+			vertical-align: top;
+			font-weight: 400;
+			font-style: normal;
+			margin: 0;
+		}
+		a{
+			display: inline-block;
+			vertical-align: top;
+			color: $clr-1;
+			transition: all 0.25s linear;
+		}
+	}
+	.hour-list{
+		overflow: hidden;
+		margin: 0;
+		color: $clr-1;
+		li{
+			overflow: hidden;
+			margin: 0 0 10px;
+		}
+		time{
+			display: block;
+		}
+	}
+	.contact-form{
+		width: 100%;
+		overflow: hidden;
+		.holder{ overflow: hidden; }
+		.form-group{
+			margin: 0 0 75px;
+			overflow: hidden;
+		}
+		.col{
+			width: 50%;
+			float: left;
+			padding: 0 0 0 15px;
+			&:first-child{ padding: 0 15px 0 0; }
+		}
+		.form-control{
+			@include font(14px, 16px);
+			color: $clr-7;
+			background: none;
+			border: none;
+			border-bottom: 1px solid $clr-14;
+			outline: none;
+			border-radius: 0;
+			box-shadow: none;
+			padding: 6px 0;
+		}
+		textarea{
+			width: 100%;
+			resize: none;
+			margin: 0 0 31px;
+		}
+		.btn{
+			color: $clr-4;
+			outline: none;
+			box-shadow: none;
+			padding: 10px 18px;
+			&:hover{
+				background: none;
+			}
+		}
+	}
+	.header{
+		overflow: hidden;
+		margin: 0 0 9px;
+		padding: 92px 0 0;
+	}
+}
+/*------------------------------------------------------------------
+33. Map Sec / .map-sec
+-------------------------------------------------------------------*/
+.map-sec{
+	overflow: hidden;
+	.map{
+		width: 100%;
+		height: 500px;
+	}
+	.map-info{
+		@include font(14px, 24px);
+		color: $clr-1;
+		h2{
+			@include font(24px, 26px);
+			margin: 0 0 10px;
+			font-weight: 700;
+		}
+		address{
+			margin: 0;
+			line-height: 24px;
+			font-style: normal;
+		}
+	}
+}
+/*------------------------------------------------------------------
+34. Comments Block / .comments-block
+-------------------------------------------------------------------*/
+.comments-block{
+	overflow: hidden;
+	padding: 25px 0 0;
+	margin: 0 0 69px;
+	border-top: 1px solid $clr-14;
+	h4{
+		@include font(24px, 26px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 32px;
+	}
+	.comment-area{
+		overflow: hidden;
+		margin: 0 0 26px;
+		.img{
+			width: 8.7%;
+			float: left;
+			overflow: hidden;
+		}
+		.txt-holder{
+			width: 91.3%;
+			float: left;
+			padding: 0 0 0 29px;
+			margin: -2px 0 0;
+		}
+		.header{
+			overflow: hidden;
+			margin: 0 0 -3px;
+		}
+		h3{
+			@include font(14px, 16px);
+			color: $clr-4;
+			font-weight: 700;
+			margin: 0;
+			display: inline-block;
+			vertical-align: middle;
+			a{
+				transition: all 0.25s linear;
+			}
+		}
+		.time{
+			color: $clr-13;
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 14px 0 0;
+		}
+		.reply{
+			color: $clr-4;
+			display: inline-block;
+			vertical-align: middle;
+			transition: all 0.25s linear;
+			.ti-share{
+				margin: 0 5px 0 0;
+			}
+		}
+		p{ margin: 0; }
+	}
+	.onelevel{
+		overflow: hidden;
+		padding: 0 0 0 99px;
+		.comment-area{
+			.img{
+				width: 10%;
+			}
+			.txt-holder{ width: 90%; }
+		}
+	}
+}
+/*------------------------------------------------------------------
+35. Comment Form / .comment-form
+-------------------------------------------------------------------*/
+.comment-form{
+	overflow: hidden;
+	padding: 25px 0 0;
+	border-top: 1px solid $clr-14;
+	h4{
+		@include font(24px, 26px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 15px;
+	}
+	p{ margin: 0 0 41px; }
+	.contact-form{
+		width: 100%;
+		overflow: hidden;
+		.form-group{
+			margin: 0 0 75px;
+			overflow: hidden;
+		}
+		.col{
+			width: 50%;
+			float: left;
+			padding: 0 0 0 15px;
+			&:first-child{ padding: 0 15px 0 0; }
+		}
+		.form-control{
+			@include font(14px, 16px);
+			color: $clr-7;
+			background: none;
+			border: none;
+			border-bottom: 1px solid $clr-14;
+			outline: none;
+			box-shadow: none;
+			padding: 6px 0;
+		}
+		textarea{
+			width: 100%;
+			resize: none;
+			margin: 0 0 31px;
+		}
+		.btn{
+			color: $clr-4;
+			outline: none;
+			box-shadow: none;
+			padding: 10px 18px;
+			&:hover{
+				background: none;
+			}
+		}
+	}
+}
+/*------------------------------------------------------------------
+36. Shop List / .shop-list
+-------------------------------------------------------------------*/
+.shop-list{
+	overflow: hidden;
+	padding-top: 92px;
+	padding-bottom: 90px;
+	.holder{ margin-bottom: 80px; }
+	.drop-down{
+		@extend %clearfix;
+		margin: 0 0 0;
+		width: 268px;
+		border-bottom: 1px solid $clr-14;
+		float: left;
+		font-weight: 700;
+		li{
+			position: relative;
+			display: block;
+			&:hover{
+				.fa{ transform: rotate(180deg); }
+				.drop-down2{
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+		.fa{
+			float: right;
+			@include font(22px, 32px);
+		}
+		a{
+			color: $clr-4;
+			display: block;
+			transition: all 0.25s linear;
+			&:hover{
+				.fa{ transform: rotate(180deg); }
+			}
+		}
+		.drop-down2{
+			position: absolute;
+			left: 0;
+			top: 100%;
+			width: 100%;
+			z-index: 2;
+			padding: 10px 0;
+			opacity: 0;
+			visibility: hidden;
+			background: $white;
+			transition: all 0.25s linear;
+		}
+	}
+	.txt2{
+		float: right;
+		color: $clr-4;
+	}
+	.shop{
+		@extend %clearfix;
+		margin: 0 0 53px;
+		&:hover{
+			.img-holder{
+				box-shadow: 0 25px 30px 0px rgba(0, 0, 0, 0.15);
+				.cart{
+					transform: translateY(0);
+				}
+			}
+		}
+		.img-holder{
+			width: 100%;
+			margin: 0 0 35px;
+			overflow: hidden;
+			position: relative;
+			z-index: 1;
+			transition: all 0.25s linear;
+			.cart{
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				@include font(13px, 15px);
+				color: $white;
+				font-weight: 700;
+				display: block;
+				padding: 18px 15px;
+				background: $black;
+				transition: all 0.50s linear;
+				transform: translateY(60px);
+			}
+			.offer{
+				position: absolute;
+				right: 0;
+				top: 0;
+				@include font(12px, 14px);
+				color: $white;
+				font-weight: 700;
+				display: inline-block;
+				vertical-align: middle;
+				padding: 5px 23px;
+				background: $black;
+			}
+		}
+		.price{
+			@include font(24px, 26px);
+			color: $clr-4;
+			font-weight: 700;
+			display: block;
+			margin: 0 0 9px;
+		}
+		.txt{
+			@include font(16px, 18px);
+			color: $clr-1;
+			display: block;
+			margin: 0;
+			a{
+				color: $clr-1;
+				transition: all 0.25s linear;
+			}
+		}
+	}
+	.nav-pagination{
+		@include font(16px, 18px);
+		color: $clr-4;
+		overflow: hidden;
+		margin: 0 auto;
+		padding: 24px 0 0;
+		width: 370px;
+		.prev{
+			float: left;
+			margin: 0;
+			a{
+				padding: 0;
+				font-weight: 400;
+				text-decoration: underline;
+				transition: all 0.25s linear;
+				&:hover{
+					text-decoration: none;
+					background: none;
+				}
+			}
+		}
+		.next{
+			float: right;
+			margin: 0;
+			a{
+				padding: 0;
+				font-weight: 400;
+				text-decoration: underline;
+				transition: all 0.25s linear;
+				&:hover{
+					text-decoration: none;
+					background: none;
+				}
+			}
+		}
+		li{
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 0 0 5px;
+			a{
+				padding: 5px 9px;
+				border-radius: 2px;
+				display: block;
+				font-weight: 700;
+				transition: all 0.25s linear;
+				&:hover{ background: $clr-4; }
+			}
+		}
+		.active{ a{ background: $clr-4; } }
+	}
+}
+/*------------------------------------------------------------------
+37. Shop Detail / .shop-detail
+-------------------------------------------------------------------*/
+.shop-detail{
+	overflow: hidden;
+	padding-top: 100px;
+	padding-bottom: 60px;
+	.holder{
+		overflow: hidden;
+		margin: 0 0 87px;
+		.img-holder{
+			width: 42.3%;
+			float: left;
+		}
+		.txt-holder{
+			width: 57.7%;
+			float: left;
+			padding: 20px 103px 0 29px;
+			overflow: hidden;
+		}
+		h4{
+			@include font(30px, 32px);
+			color: $clr-4;
+			font-weight: 700;
+			margin: 0 0 15px;
+		}
+		.price{
+			@include font(30px, 32px);
+			color: $clr-4;
+			margin: 0 0 10px;
+			display: block;
+		}
+		p{
+			line-height: 24px;
+			margin: 0 0 21px;
+		}
+		.rating-list{
+			color: $clr-4;
+			overflow: hidden;
+			margin: 0 0 27px;
+			li{
+				float: left;
+				margin: 0 7px 0 0;
+			}
+			a{
+				display: block;
+				color: $clr-4;
+				transition: all 0.25s linear;
+			}
+		}
+		.cart-form{
+			width: 71px;
+			float: left;
+			margin: 0 31px 0 0;
+			select{
+				width: 100%;
+				height: 40px;
+			}
+		}
+		.btn{
+			color: $clr-4;
+			padding: 12px 37px 10px;
+			&:hover{ background: none; }
+		}
+	}
+	.tabset{
+		overflow: hidden;
+		font-weight: 700;
+		color: $clr-4;
+		margin: 0;
+		li{
+			float: left;
+		}
+		a{
+			padding: 2px 60px 3px 28px;
+			text-align: center;
+			border: 1px solid $clr-14;
+			display: block;
+			transition: all 0.25s linear;
+		}
+		.active{
+			border-bottom: none;
+		}
+	}
+	.tab-content{
+		padding: 31px 28px 50px;
+		border: 1px solid $clr-14;
+		overflow: hidden;
+		font-weight: 400;
+		margin: 0 0 74px;
+		p{ margin: 0 0 9px; }
+	}
+	h3{
+		@include font(24px, 26px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 38px;
+	}
+	.shop{
+		width: 33.33%;
+		float: left;
+		padding: 0 15px;
+		@extend %clearfix;
+		&:hover{
+			.img-holder{
+				box-shadow: 0 25px 30px 0px rgba(0, 0, 0, 0.15);
+				.cart{
+					transform: translateY(0);
+				}
+			}
+		}
+		.img-holder{
+			width: 100%;
+			margin: 0 0 35px;
+			overflow: hidden;
+			position: relative;
+			z-index: 1;
+			transition: all 0.25s linear;
+			.cart{
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				@include font(13px, 15px);
+				color: $white;
+				font-weight: 700;
+				display: block;
+				padding: 18px 15px;
+				background: $black;
+				transition: all 0.50s linear;
+				transform: translateY(60px);
+			}
+			.offer{
+				position: absolute;
+				right: 0;
+				top: 0;
+				@include font(12px, 14px);
+				color: $white;
+				font-weight: 700;
+				display: inline-block;
+				vertical-align: middle;
+				padding: 5px 23px;
+				background: $black;
+			}
+		}
+		.price{
+			@include font(24px, 26px);
+			color: $clr-4;
+			font-weight: 700;
+			display: block;
+			margin: 0 0 9px;
+		}
+		.txt{
+			@include font(16px, 18px);
+			color: $clr-1;
+			display: block;
+			margin: 0;
+			a{
+				color: $clr-1;
+				transition: all 0.25s linear;
+			}
+		}
+	}
+}
+/*------------------------------------------------------------------
+38. Error Page / .error-page
+-------------------------------------------------------------------*/
+.error-page{
+	overflow: hidden;
+	padding-top: 100px;
+	padding-bottom: 258px;
+	@include font(20px, 22px);
+	font-weight: 700;
+	color: $clr-15;
+	background: $black;
+	h2{
+		@include font(185px, 187px);
+		font-weight: 700;
+		margin: 0 0 29px;
+		letter-spacing: 36px;
+	}
+	.txt{
+		@include font(44px, 46px);
+		color: $clr-13;
+		font-weight: 700;
+		margin: 0 0 35px;
+		display: block;
+	}
+	p{ margin: 0 0 49px; }
+	.btn{
+		color: $black;
+		padding: 10px 25px;
+		&:hover{ background: none; }
+	}
+}
+/*------------------------------------------------------------------
+39. Faq Sec / .faq-sec
+-------------------------------------------------------------------*/
+.faq-sec{
+	overflow: hidden;
+	padding-top: 100px;
+	padding-bottom: 75px;
+	.accordion{
+		overflow: hidden;
+		li{
+			overflow: hidden;
+			width: 100%;
+			margin: 0 0 22px;
+		}
+		.active{
+			.opener{
+				&:before{
+					opacity: 1;
+					visibility: visible;
+				}
+				.ti-plus{ display: none; }
+				.ti-minus{
+					opacity: 1;
+					float: right;
+				}
+			}
+		}
+		.opener{
+			@include font(16px, 18px);
+			font-weight: 700;
+			color: $clr-4;
+			display: block;
+			border: 1px solid $clr-14;
+			padding: 13px 27px 16px 30px;
+			position: relative;
+			z-index: 1;
+			&:before{
+				@include element(0, auto, auto, 0);
+				@include size(4px, 100%);
+				z-index: 0;
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.25s linear;
+			}
+			.ti-plus{ float: right; }
+			.ti-minus{ opacity: 0; }
+		}
+		.slide{
+			overflow: hidden;
+			border: 1px solid $clr-14;
+			border-top: none;
+			padding: 24px 40px 52px 30px;
+			p{ margin: 0; }
+		}
+	}
+}
+/*------------------------------------------------------------------
+40. Signup Form / .signup-form
+-------------------------------------------------------------------*/
+.signup-form{
+	overflow: hidden;
+	padding: 92px 30px;
+	width: 430px;
+	margin: 0 auto;
+	background: $white;
+	.form-group{
+		overflow: hidden;
+		margin: 0 0 10px;
+	}
+	.form-control{
+		@include font(14px, 16px);
+		color: $clr-13;
+		font-weight: 400;
+		@include size(100%, 40px);
+		background: none;
+		outline: none;
+		box-shadow: none;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		text-transform: uppercase;
+		margin: 0 0 36px;
+		border-radius: 0;
+		text-align: center;
+		@include placeholder{ color: $clr-13; }
+	}
+	.btn{
+		color: $clr-4;
+		outline: none;
+		box-shadow: none;
+		padding: 10px 22px;
+		margin: 0 0 27px;
+		&:hover{
+			background: none;
+		}
+	}
+	h2{
+		@include font(30px, 32px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 14px;
+	}
+	p{ margin: 0 0 54px;}
+	a{
+		@include font(12px, 14px);
+		font-weight: 400;
+		display: block;
+		transition: all 0.25s linear;
+		&:hover{ color: $clr-4; }
+	}
+}
+/*------------------------------------------------------------------
+41. Popup Holder / .popup-holder
+-------------------------------------------------------------------*/
+.popup-holder{
+	position: relative;
+	overflow: hidden;
+	height: 0;
+}
+.newsletter-block{
+	width: 530px;
+	overflow: hidden;
+	padding: 17px 99px 24px;
+	font-weight: 700;
+	color: $clr-1;
+	.main-heading{
+		@include font(24px, 30px);
+		color: $white;
+		padding: 0 0 12px;
+		margin: 0 0 30px;
+		&:before{
+			@include size(60px, 2px);
+			background: $clr-4;
+		}
+	}
+	p{ margin: 0 0 29px; }
+	.newsletter-form{
+		position: relative;
+		.form-control{
+			@include font(14px, 16px);
+			color: $clr-1;
+			@include size(100%, 46px);
+			border: none;
+			outline: none;
+			padding: 6px 40px 6px 12px;
+			box-shadow: none;
+			background: $white;
+			@include placeholder{ color: $clr-1; }
+		}
+		button{
+			position: absolute;
+			right: 13px;
+			top: 14px;
+			@include font(16px, 18px);
+			color: $clr-1;
+			border: none;
+			outline: none;
+			box-shadow: none;
+			background: none;
+		}
+	}
+}
+/*------------------------------------------------------------------
+42. Work Sec / .work-sec
+-------------------------------------------------------------------*/
+.work-sec{
+	overflow: hidden;
+	padding-top: 92px;
+	padding-bottom: 100px;
+	.header{
+		@include font(16px, 18px);
+		margin: 0 0 47px;
+	}
+	.main-heading2{ margin: 0 0 18px; }
+	.work-slider{
+		overflow: hidden;
+		.slide{
+			overflow: hidden;
+			.txt-holder{
+				float: left;
+				width: 51%;
+				line-height: 24px;
+				padding: 60px 0 0 63px;
+			}
+			h4{
+				@include font(18px, 20px);
+				color: $clr-4;
+				font-weight: 700;
+				margin: 0 0 16px;
+			}
+			p{ margin: 0 0 26px; }
+			.read-more{
+				text-decoration: underline;
+				color: $clr-4;
+				transition: all 0.25s linear;
+				&:hover{
+					text-decoration: none;
+					color: $clr-12;
+				}
+			}
+			.img-holder{
+				width: 49%;
+				float: left;
+			}
+		}
+		.slick-prev,
+		.slick-next{
+			background: none;
+			border: 1px solid $clr-4;;
+			text-indent: -9999px;
+			position: absolute;
+			bottom: 62px;
+			z-index: 1;
+			@include size(24px, 24px);
+			transition: all 0.25s linear;
+			&:before{
+				position: absolute;
+				left: 2px;
+				top: 0;
+				font-family: 'themify';
+				@include font(17px, 22px);
+				color: $clr-4;
+				text-indent: 0;
+				transition: all 0.25s linear;
+			}
+			&:hover{
+				background: $clr-12;
+				border-color: $clr-12;
+				&:before{ color: $white; }
+			}
+		}
+		.slick-prev{
+			right: 508px;
+			&:before{ content: "\e64a"; }
+		}
+		.slick-next{
+			right: 475px;
+			&:before{ content: "\e649"; }
+		}
+	}
+}
+/*------------------------------------------------------------------
+43. Login Sec / .login-sec
+-------------------------------------------------------------------*/
+.login-sec{
+	overflow: hidden;
+	padding: 150px 0;
+	background: $black;
+}
+/*------------------------------------------------------------------
+44. Footer / #footer
+-------------------------------------------------------------------*/
+#footer{
+	overflow: hidden;
+	.footer-holder{
+		padding: 76px 0 63px;
+		overflow: hidden;
+		background: $clr-4;
+		color: $clr-7;
+	}
+	h3{
+		@include font(18px, 20px);
+		color: $white;
+		font-weight: 700;
+		margin: 0 0 31px;
+		padding: 0 0 14px;
+		position: relative;
+		&:before{
+			@include element(auto, auto, 0, 0);
+			@include size(60px, 2px);
+			z-index: 0;
+		}
+	}
+	.contact-list{
+		overflow: hidden;
+		margin: 0;
+		li{
+			overflow: hidden;
+			margin: 0 0 10px;
+		}
+		.icon{
+			@include font(14px, 16px);
+			display: inline-block;
+			vertical-align: top;
+			margin: 5px 10px 0 0;
+		}
+		address{
+			display: inline-block;
+			vertical-align: top;
+			font-weight: 400;
+			font-style: normal;
+			margin: 0;
+		}
+		a{
+			display: inline-block;
+			vertical-align: top;
+			color: $clr-7;
+			transition: all 0.25s linear;
+		}
+	}
+	.hour-list{
+		overflow: hidden;
+		margin: 0;
+		li{
+			overflow: hidden;
+			margin: 0 0 10px;
+		}
+		time{
+			display: block;
+		}
+	}
+	.subscribe-form{
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+		padding: 19px 0 0;
+		.form-control{
+			color: $clr-9;
+			@include size(100%, 46px);
+			background: $clr-8;
+			border: none;
+			outline: none;
+			box-shadow: none;
+			border-radius: 0;
+			padding: 6px 40px 6px 22px;
+		}
+		button{
+			position: absolute;
+			right: 20px;
+			top: 31px;
+			@include font(16px, 18px);
+			color: $clr-9;
+			background: none;
+			padding: 0;
+			border: none;
+			outline: none;
+			border-radius: 0;
+			box-shadow: none;
+			transition: all 0.25s linear;
+			&:hover{ transform: rotate(30deg);}
+		}
+	}
+	.footer-area{
+		padding: 10px 0 14px;
+		overflow: hidden;
+		background: $black;
+		p{ margin: 0; }
+	}
+	.socail-network{
+		float: right;
+		text-align: right;
+		color: $clr-1;
+		li{ margin: 0 0 0 39px; }
+		a{ color: $clr-1; }
+	}
+}
+/*------------------------------------------------------------------
+45. Back Top / #back-top
+-------------------------------------------------------------------*/
+#back-top {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	@include font(25px, 30px);
+    color: $white;
+    cursor: pointer;
+    float: right;
+    @include size(50px, 50px);
+    padding: 9px 0;
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease 0s;
+    &.active{
+    	opacity: 1;
+    	visibility: visible;
+    }
+}
+/*------------------------------------------------------------------
+46. Loader Holder / .loader-holder
+-------------------------------------------------------------------*/
+.loader-holder {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 1);
+  .block {
+	  top: 50%;
+	  left: 50%;
+	  position: absolute;
+	  transform: translate(-50%, -50%);
+	}
+}
+.checkout-sec{
+	padding-top: 99px;
+	padding-bottom: 100px;
+	overflow: hidden;
+	.check-list{
+		@include font(14px, 16px);
+		color: $clr-1;
+		overflow: hidden;
+		margin: 0 0 54px;
+		li{
+			overflow: hidden;
+			margin: 0 0 35px;
+		}
+		a{
+			transition: all 0.25s linear;
+		}
+		.icon{
+			float: left;
+			margin: 0 13px 0 0;
+		}
+	}
+	.border{ border-bottom: 1px solid $clr-13; }
+	h2{
+		@include font(24px, 36px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0 0 45px;
+		&.marg{ margin: 0 0 37px; }
+	}
+	.billing-form{
+		overflow: hidden;
+		padding: 0 20px 0 0;
+		margin: 0 0 64px;
+		.form-group{
+			overflow: hidden;
+			margin: 0 0 27px;
+		}
+		.col{
+			width: 50%;
+			float: left;
+			padding: 0 0 0 5px;
+			&:first-child{ padding: 0 5px 0 0; }
+		}
+		label{
+			@include font(14px, 16px);
+			color: $clr-1;
+			font-weight: 700;
+			display: block;
+			margin: 0 0 7px;
+		}
+		.form-control{
+			color: $clr-1;
+			@include size(100%, 40px);
+			border: 1px solid $clr-13;
+			background: none;
+			box-shadow: none;
+			outline: none;
+			border-radius: 0;
+			@include placeholder{ color: $clr-1; }
+		}
+	}
+	.info-form{
+		overflow: hidden;
+		label{
+			@include font(14px, 16px);
+			color: $clr-1;
+			font-weight: 700;
+			display: block;
+			margin: 0 0 7px;
+		}
+		textarea{
+			color: $clr-13;
+			width: 100%;
+			min-height: 120px;
+			border: 1px solid $clr-13;
+			background: none;
+			box-shadow: none;
+			outline: none;
+			resize: none;
+			padding: 6px 12px;
+			border-radius: 0;
+			@include placeholder{ color: $clr-13; }
+		}
+	}
+	.title{
+		display: block;
+		margin: 0 0 2px;
+		padding: 26px 0 0;
+		&.bold{
+			@include font(24px, 26px);
+			color: $clr-4;
+			display: block;
+		}
+	}
+	.high-light{
+		@include font(16px, 18px);
+		color: $clr-4;
+		display: block;
+		margin: 0 0 8px;
+		padding: 24px 0 0;
+	}
+	.pay-list{
+		overflow: hidden;
+		padding: 55px 0 0;
+		margin: 0 0 70px;
+		li{
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 5px 0 0;
+		}
+	}
+	.btn{
+		color: $clr-4;
+		padding: 10px 51px;
+		&:hover{ background: none; }
+	}
+}
+.cart-sec{
+	padding-top: 99px;
+	padding-bottom: 100px;
+	overflow: hidden;
+	.border{ border-bottom: 1px solid $clr-13; }
+	.pad{
+		padding: 44px 0 30px;
+	}
+	.title{
+		display: block;
+		margin: 0 0 22px;
+		padding: 26px 0 0;
+	}
+	.high-light{
+		@include font(16px, 18px);
+		color: $clr-4;
+		display: block;
+	}
+	.img-holder{
+		width: 35px;
+		margin: 0 0 0 70px;
+	}
+	.ti-close{ color: red; }
+	.coupon-form{
+		overflow: hidden;
+		.form-control{
+			color: $clr-13;
+			@include size(139px, 34px);
+			border: 1px solid $clr-13;
+			background: none;
+			float: left;
+			box-shadow: none;
+			outline: none;
+			border-radius: 0;
+			margin: 0 10px 0 0;
+			@include placeholder{ color: $clr-13; }
+		}
+		.btn{
+			float: left;
+			border: none;
+			outline: none;
+			box-shadow: none;
+			color: $clr-4;
+			padding: 9px 22px;
+			background: $clr-13;
+			&:hover{ color: $white; }
+		}
+	}
+	.btn{
+		border: none;
+		color: $clr-4;
+		padding: 9px 22px;
+		background: $clr-13;
+		&:hover{ color: $white; }
+	}
+	h2{
+		@include font(24px, 36px);
+		color: $clr-4;
+		font-weight: 700;
+		margin: 0;
+		padding: 40px 0 0;
+	}
+	.cart-list{
+		overflow: hidden;
+		margin: 0;
+		li{
+			overflow: hidden;
+			padding: 19px 0 2px;
+			margin: 0 0 14px;
+		}
+		.title{
+			float: left;
+			padding: 0;
+			margin: 0;
+			&.bold{
+				@include font(24px, 26px);
+				color: $clr-4;
+				float: right;
+			}
+		}
+		.high-light{
+			float: right;
+			@include font(16px, 18px);
+			color: $clr-4;
+		}
+		.btn{
+			border-width: 1px;
+			border-style: solid;
+			width: 100%;
+			color: $clr-4;
+			padding: 10px 51px;
+			&:hover{ background: none; }
+		}
+	}
+}
+.coming-sec{
+	color: $clr-15;
+	padding: 100px;
+	.holder{
+		@include v-align(100vh, middle, after);
+		box-shadow: 0 25px 30px 0px rgba(0, 0, 0, 0.25);
+	}
+	p{
+		margin: 0 0 40px;
+		letter-spacing: 6px;
+		font-weight: 400;
+		word-spacing: 20px;
+	}
+	h4{
+		@include font(48px, 50px);
+		color: $clr-4;
+		font-weight: 400;
+		margin: 0 0 12px;
+	}
+	span{
+		@include font(18px, 20px);
+		color: $clr-4;
+		display: block;
+		margin: 0 0 20px;
+	}
+	.socail-network{
+		@include font(14px, 16px);
+		color: $clr-4;
+		overflow: hidden;
+		margin: 0;
+		li{
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 12px;
+		}
+		a{
+			@include size(30px, 30px);
+			border-radius: 100%;
+			display: block;
+			padding: 5px;
+			transition: all 0.25s linear;
+			&:hover{ color: $white; }
+		}
+	}
+	.comming-timer{
+		border-bottom-width: 2px;
+		border-bottom-style: solid;
+		padding: 0 0 38px;
+		margin: 0 auto 60px;
+		width: 830px;
+		overflow: hidden;
+	}
+	.countdown-section{
+		margin: 0 40px;
+		float: left;
+		overflow: hidden;
+		.countdown-amount{
+			@include font(48px, 50px);
+			color: $clr-16;
+			margin: 0 5px 0 0;
+			float: left;
+		}
+		.countdown-period{
+			@include font(16px, 18px);
+			color: $clr-15;
+			font-weight: 400;
+			float: left;
+			margin: 23% 0 0;
+			text-transform: uppercase;
+			position: relative;
+			&:before{
+				position: absolute;
+				content: "/";
+				left: -5px;
+				top: 0;
+				color: $clr-15;
+				@include font(16px, 18px);
+			}
+		}
+	}
+}
+#bgvid {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100vh;
+	width: auto;
+	z-index: -100;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background: url("images/polina.jpg") no-repeat;
+	background-size: cover;
+	-webkit-transition: 1s opacity;
+	transition: 1s opacity;
+}

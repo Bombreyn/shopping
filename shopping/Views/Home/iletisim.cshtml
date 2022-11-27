@@ -1,0 +1,95 @@
+﻿@model shopping.SiteAyarViewModel
+@{
+    ViewBag.Title = "İletişim";
+}
+
+<style>
+    .map-container {
+        overflow: hidden;
+        position: relative;
+        height: 0;
+    }
+
+        .map-container iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+</style>
+
+<main id="main">
+    <!-- contact sec of the page -->
+    <section class="contact-sec container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6" align="center">
+                <h3>İletişim</h3>
+                <!-- Contact list of the page -->
+                <ul class="list-unstyled contact-list">
+                    @if (Proje.Aktif.SiteAyar.telefon1 != null && Proje.Aktif.SiteAyar.telefon1 != "")
+                    {
+                        <li>
+                            <span class="icon ti-headphone-alt"></span>
+                            <a href="tel:@Proje.Aktif.SiteAyar.telefon1">@Proje.Aktif.SiteAyar.telefon1</a>
+                        </li>
+                    }
+                    @if (Proje.Aktif.SiteAyar.telefon2 != null && Proje.Aktif.SiteAyar.telefon2 != "")
+                    {
+                        <li>
+                            <span class="icon ti-headphone-alt"></span>
+                            <a href="tel:@Proje.Aktif.SiteAyar.telefon2">@Proje.Aktif.SiteAyar.telefon2</a>
+                        </li>
+                    }
+                    @if (Proje.Aktif.SiteAyar.telefon3 != null && Proje.Aktif.SiteAyar.telefon3 != "")
+                    {
+                        <li>
+                            <span class="icon ti-headphone-alt"></span>
+                            <a href="tel:@Proje.Aktif.SiteAyar.telefon3">@Proje.Aktif.SiteAyar.telefon3</a>
+                        </li>
+                    }
+                    <li>
+                        <span class="icon ti-email"></span>
+                        <a href="mailto:@Proje.Aktif.SiteAyar.mail">@Proje.Aktif.SiteAyar.mail</a>
+                    </li>
+                    <li>
+                        <address><span class="icon ti-location-pin"></span>@Proje.Aktif.SiteAyar.adres</address>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-xs-12 col-sm-6" align="center">
+                <h3>Çalışma Saatleri</h3>
+                <!-- Hour list of the page -->
+                <ul class="list-unstyled hour-list">
+                    <li>@Proje.Aktif.SiteAyar.iletisim_saat</li>
+                    <li>@Proje.Aktif.SiteAyar.iletisim_haftaici</li>
+                    <li>@Proje.Aktif.SiteAyar.iletisim_cumartesi</li>
+                    <li>@Proje.Aktif.SiteAyar.iletisim_pazar</li>
+                </ul>
+
+            </div>
+        </div>
+           <br /><br /><br />
+            <div class="col-xs-12 col-sm-12" align="center">
+                <h3>Ödeme Yöntemleri</h3>
+                <!-- Hour list of the page -->
+                <ul class="list-unstyled hour-list">
+                    @foreach (var item2 in Model.odemes)
+                    {
+                        if (item2.aktif != false)
+                        {
+                            <li>@item2.banka : @item2.iban</li>
+
+                        }
+                    }
+                </ul>
+            </div>
+            <br />
+    </section>
+
+    <div id="map-container" class="z-depth-1-half map-container" style="height: 500px">
+        <iframe src="@Proje.Aktif.SiteAyar.harita" frameborder="0"
+                style="border:0" allowfullscreen></iframe>
+    </div>
+</main>

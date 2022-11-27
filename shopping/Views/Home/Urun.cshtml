@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "Ürün";
+}
+@if (TempData["UrunGuncellendi"] != null)
+{
+
+
+    <script>
+        Swal.fire("Ürün", "Güncellendi", "success")
+    </script>
+}
+@using shopping.Models
+@model Urun
+
+<style>
+    .btn2 {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 13px 90px;
+        font-size: 14px;
+        line-height: 1.857;
+        border-radius: 4px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .shop-detail .holder .btn2 {
+        color: #111;
+    }
+
+    .btn2 {
+        font-size: 14px;
+        line-height: 16px;
+        color: #fff;
+        font-weight: 700;
+        display: inline-block;
+        vertical-align: middle;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 0;
+        transition: all 0.25s linear;
+    }
+
+        .btn2.active {
+            color: #111;
+            box-shadow: none;
+            outline: none;
+        }
+
+            .btn2.active:hover {
+                background: none;
+            }
+
+        .btn2:hover {
+            color: #111;
+        }
+</style>
+
+<main id="main">
+    <!-- banner of the page -->
+    <section class="banner bg-full overlay" style="background-image: url(../../@Proje.Aktif.SiteAyar.background);">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1 class="main-heading3 text-uppercase">@ViewBag.title</h1>
+                    <!-- breadcrumbs of the page -->
+                    <nav class="breadcrumbs text-center">
+                        <ul class="list-unstyled">
+                            <li><a href="/">Anasayfa</a></li>
+                            <li>></li>
+                            <li><a href="/Home/Urunler">Ürünler</a></li>
+                            <li>></li>
+                            <li><a href="#">@Model.isim</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- shop detail of the page -->
+</main>
+
+<section class="shop-detail container">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="holder">
+                <div class="img-holder">
+                    @if (Model.kapakresim == null || Model.kapakresim == "")
+                    {
+                        <img src="~/Content/images/resim/resimyok.png" alt="image description" class="img-responsive">
+                    }
+                    else
+                    {
+                        <img src="@Model.kapakresim" alt="image description" class="img-responsive">
+                    }
+                </div>
+                <div class="txt-holder">
+
+                    @if (Model.urunkodu == null || Model.urunkodu == "" || Model.urunkodu == " ")
+
+                    {
+                        <h4>@Model.isim </h4>
+                    }
+                    else
+                    {
+                        <h4>@Model.isim (# @Model.urunkodu) </h4>
+                    }
+
+
+                    @if (Model.stok == true)
+                    {
+                        <h5>Stok: Var</h5>
+                    }
+                    else
+                    {
+                        <h5>Stok: Yok</h5>
+
+                    }
+
+                    @if (Model.fiyat == null || Model.fiyat == "" || Model.fiyat == " ")
+                    {
+
+                    }
+                    else
+                    {
+                        <strong class="price">@Model.fiyat ₺</strong>
+                    }
+                    <br>
+                    <a href="tel:@Proje.Aktif.SiteAyar.telefon1" class="btn text-center text-uppercase">Telefon</a>
+                    <a href="mailto:@Proje.Aktif.SiteAyar.mail?&subject=Ürün%20Sipariş/Bilgi&body=Ad-Soyad:%0D%0ATelefon:%0D%0AAdet:%0D%0AAdres:%0D%0AÜrünler:%20@Model.isim%20(#@Model.urunkodu)%0D%0AAçıklama:%0D%0A" class="btn text-center text-uppercase">Mail</a>
+                    <br />
+                    <br />
+                    @if (Model.satin_al == null || Model.satin_al == "" || Model.satin_al == " " || Model.stok == false)
+                    {
+
+                    }
+                    else
+                    {
+                        <a href="@Model.satin_al" class="btn2 text-center text-uppercase">Satın Al</a>
+
+                    }
+                </div>
+            </div>
+            <ul class="tabset list-unstyled">
+                <li><a href="#tab1" class="active">Açıklama</a></li>
+                <li><a href="#tab2">Görseller</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab1" class="active">
+                    <p>@Model.aciklama</p>
+                    @if (Model.aciklamaresim == null || Model.aciklamaresim == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <a href="@Model.aciklamaresim" target="_blank"> <img src="@Model.aciklamaresim" class="img-fluid" alt="Responsive image"></a>
+                    }
+
+                </div>
+                <div id="tab2">
+                    @if (Model.resim1 == null || Model.resim1 == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="shop text-center">
+                            <div class="img-holder">
+                                <img src="@Model.resim1" alt="image description" class="img-responsive">
+                            </div>
+                        </div>
+                    }
+                    @if (Model.resim2 == null || Model.resim2 == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="shop text-center">
+                            <div class="img-holder">
+                                <img src="@Model.resim2" alt="image description" class="img-responsive">
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.resim3 == null || Model.resim3 == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="shop text-center">
+                            <div class="img-holder">
+                                <img src="@Model.resim3" alt="image description" class="img-responsive">
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.resim4 == null || Model.resim4 == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="shop text-center">
+                            <div class="img-holder">
+                                <img src="@Model.resim4" alt="image description" class="img-responsive">
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.resim5 == null || Model.resim5 == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="shop text-center">
+                            <div class="img-holder">
+                                <img src="@Model.resim5" alt="image description" class="img-responsive">
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.resim6 == null || Model.resim6 == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="shop text-center">
+                            <div class="img-holder">
+                                <img src="@Model.resim6" alt="image description" class="img-responsive">
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

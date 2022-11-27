@@ -1,0 +1,320 @@
+﻿@using shopping.Models
+@model SiteAyarViewModel
+@{
+    ViewBag.Title = "Site Ayar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@if (TempData["Kaydedildi"] != null)
+{
+
+    <script>
+        Swal.fire("Değişiklikler", "Kaydedildi", "success")
+    </script>
+}
+
+
+@using (Html.BeginForm("Siteduzenle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="hidden" class="form-control" name="siteayarID" required="" autocomplete="off" value="@Model.siteAyar.siteayarID">
+    <div class="content-wthree2">
+        <div class="container">
+            <div class="row">
+                <p></p>
+                <div class="form-group col-sm-4">
+                    <label for="recipient-name" class="col-form-label ">Site Adı:</label>
+                    <input type="text" class="form-control" name="site_adi" required="" autocomplete="off" value="@Model.siteAyar.site_adi">
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="recipient-name" class="col-form-label ">Site Logo Yazı:</label>
+                    <input type="text" class="form-control" name="logo_yazi" required="" autocomplete="off" value="@Model.siteAyar.logo_yazi">
+                </div>
+                @if (Model.siteAyar.logo == null || Model.siteAyar.logo == "")
+                {
+                    <div class="form-group col-sm-4">
+                        <label for="recipient-name" class="col-form-label">Logo Resim(350x100):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="logo" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-4">
+                        <label for="recipient-name" class="col-form-label">Logo Resim(350x100):&nbsp; </label>
+                        <a href="@Model.siteAyar.logo" target="_blank">
+                            <img src="@Model.siteAyar.logo" name="logo" alt="image" width="100" height="100">
+                        </a>
+                        <input type="file" name="logo" />
+                    </div>
+                }
+
+                @if (Model.siteAyar.background == null || Model.siteAyar.background == "")
+                {
+                    <div class="form-group col-sm-4">
+                        <label for="recipient-name" class="col-form-label">Background Resim:&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="background" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-4">
+                        <label for="recipient-name" class="col-form-label">Background Resim:&nbsp; </label>
+                        <a href="@Model.siteAyar.background" target="_blank">
+                            <img src="@Model.siteAyar.background" name="background" alt="image" width="100" height="100">
+                        </a>
+                        <input type="file" name="background" />
+                    </div>
+                }
+                @if (Model.siteAyar.katalog == null || Model.siteAyar.katalog == "")
+                {
+                    <div class="form-group col-sm-4">
+                        <label for="recipient-name" class="col-form-label">Katalog:&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="katalog" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-4">
+                        <label for="recipient-name" class="col-form-label">Katalog&nbsp; (indirmek için<a href="@Proje.Aktif.SiteAyar.katalog" download="@Proje.Aktif.SiteAyar.site_adi Katalog.pdf">&nbsp;tıklayınız</a>):&nbsp; </label>
+                        <i class="text-green fas fa-check"></i>
+                        <input type="file" name="katalog" />
+                    </div>
+                }
+
+                <div class="content-wthree2 form-group col-sm-4">
+                    <div class="grid-w3layouts1">
+                        <div class="w3-agile1">
+                            <label class="rating">Kayan Slider Aktif<span>*</span></label>
+                            <ul>
+                                @if (Model.siteAyar.kayarlogo_aktif == true)
+                                {
+                                    <li>
+                                        <input type="radio" id="a-option" value="true" name="kayarlogo_aktif" checked>
+                                        <label for="a-option">Aktif</label>
+                                        <div class="check"></div>
+                                    </li>
+
+                                    <li>
+                                        <input type="radio" id="b-option" value="false" name="kayarlogo_aktif">
+                                        <label for="b-option">Pasif</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <input type="radio" id="a-option" value="true" name="kayarlogo_aktif">
+                                        <label for="a-option">Aktif</label>
+                                        <div class="check"></div>
+                                    </li>
+
+                                    <li>
+                                        <input type="radio" id="b-option" value="false" name="kayarlogo_aktif" checked>
+                                        <label for="b-option">Pasif</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+                                }
+
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <br /><br /><br /><br /><br /><br /><br /><br />
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-12" align="center">
+                            <h1>İLETİŞİM / HAKKIMIZDA</h1>
+                        </div>
+                    </div>
+                </div>
+                <br /><br /><br /><br />
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">Mail:</label>
+                    <input type="text" class="form-control" name="mail" required="" autocomplete="off" value="@Model.siteAyar.mail">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">Telefon 1:</label>
+                    <input type="text" class="form-control" name="telefon1" required="" autocomplete="off" value="@Model.siteAyar.telefon1">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">Telefon 2:</label>
+                    <input type="text" class="form-control" name="telefon2" autocomplete="off" value="@Model.siteAyar.telefon2">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">Whatsapp Telefon:</label>
+                    <input type="text" class="form-control" name="telefon3" autocomplete="off" value="@Model.siteAyar.telefon3">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">İletişim Saatleri:</label>
+                    <input type="text" class="form-control" name="iletisim_saat" autocomplete="off" value="@Model.siteAyar.iletisim_saat">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">İletişim Hafta içi:</label>
+                    <input type="text" class="form-control" name="iletisim_haftaici" autocomplete="off" value="@Model.siteAyar.iletisim_haftaici">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">İletişim Cumartesi:</label>
+                    <input type="text" class="form-control" name="iletisim_cumartesi" autocomplete="off" value="@Model.siteAyar.iletisim_cumartesi">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">İletişim Pazar:</label>
+                    <input type="text" class="form-control" name="iletisim_pazar" autocomplete="off" value="@Model.siteAyar.iletisim_pazar">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="message-text" class="col-form-label">Harita:</label>
+                    <textarea class="form-control" id="message-text" name="harita">@Model.siteAyar.harita</textarea>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="message-text" class="col-form-label">Adres:</label>
+                    <textarea class="form-control" id="message-text" name="adres">@Model.siteAyar.adres</textarea>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label">Hakkımızda Başlık:</label>
+                    <input type="text" class="form-control" name="hakkimizda_baslik" required="" autocomplete="off" value="@Model.siteAyar.hakkimizda_baslik">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="message-text" class="col-form-label">Hakkımızda Yazı:</label>
+                    <textarea class="form-control" id="message-text" name="hakkimizda">@Model.siteAyar.hakkimizda</textarea>
+                </div>
+                @if (Model.siteAyar.hakkimizda_resim == null || Model.siteAyar.hakkimizda_resim == "")
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Hakkımızda Resim(310x370):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="hakkimizda_resim" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Hakkımızda Resim(310x370):&nbsp; </label>
+                        <a href="@Model.siteAyar.hakkimizda_resim" target="_blank">
+                            <img src="@Model.siteAyar.hakkimizda_resim" name="hakkimizda_resim" alt="image" width="100" height="100">
+                        </a>
+                        <input type="file" name="hakkimizda_resim" />
+                    </div>
+                }
+                @if (Model.siteAyar.galeri_resim1 == null || Model.siteAyar.galeri_resim1 == "")
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Galeri Resim 1(960x720):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="galeri_resim1" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Galeri Resim 1(960x720):&nbsp; </label>
+                        <a href="@Model.siteAyar.galeri_resim1" target="_blank">
+                            <img src="@Model.siteAyar.galeri_resim1" name="galeri_resim1" alt="image" width="100" height="100">
+                        </a>
+                        <input type="file" name="galeri_resim1" />
+                    </div>
+                }
+                @if (Model.siteAyar.galeri_resim2 == null || Model.siteAyar.galeri_resim2 == "")
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Galeri Resim 2(960x720):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="galeri_resim2" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Galeri Resim 2(960x720):&nbsp; </label>
+                        <a href="@Model.siteAyar.galeri_resim2" target="_blank">
+                            <img src="@Model.siteAyar.galeri_resim2" name="galeri_resim2" alt="image" width="100" height="100">
+                        </a>
+                        <input type="file" name="galeri_resim2" />
+                    </div>
+                }
+                @if (Model.siteAyar.galeri_resim3 == null || Model.siteAyar.galeri_resim3 == "")
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Galeri Resim 3(960x720):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="galeri_resim3" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Galeri Resim 3(960x720):&nbsp; </label>
+                        <a href="@Model.siteAyar.galeri_resim3" target="_blank">
+                            <img src="@Model.siteAyar.galeri_resim3" name="galeri_resim3" alt="image" width="100" height="100">
+                        </a>
+                        <input type="file" name="galeri_resim3" />
+                    </div>
+                }
+                @if (Model.siteAyar.galeri_resim4 == null || Model.siteAyar.galeri_resim4 == "")
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Galeri Resim 4(960x720):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="galeri_resim4" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-3">
+                        <label for="recipient-name" class="col-form-label">Galeri Resim 4(960x720):&nbsp; </label>
+                        <a href="@Model.siteAyar.galeri_resim4" target="_blank">
+                            <img src="@Model.siteAyar.galeri_resim4" name="galeri_resim4" alt="image" width="100" height="100">
+                        </a>
+                        @*<button id="resimSil_4" type="button" class="btn btn-default">X</button>*@
+                        <input type="file" name="galeri_resim4" />
+                    </div>
+                }
+                <div class="form-group col-sm-4">
+                    <label for="message-text" class="col-form-label">Yazı 1:</label>
+                    <textarea class="form-control" id="message-text" name="yazi1">@Model.siteAyar.yazi1</textarea>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="message-text" class="col-form-label">Yazı 2:</label>
+                    <textarea class="form-control" id="message-text" name="yazi2">@Model.siteAyar.yazi2</textarea>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="message-text" class="col-form-label">Yazı 3:</label>
+                    <textarea class="form-control" id="message-text" name="yazi3">@Model.siteAyar.yazi3</textarea>
+                </div>
+                <!-- Content Header (Page header) -->
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-12" align="center">
+                            <h1>SEO</h1>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="message-text" class="col-form-label">Abstract(Site Hizmet):</label>
+                    <textarea class="form-control" id="message-text" name="_abstract">@Model.siteAyar._abstract</textarea>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="message-text" class="col-form-label">Description(Site İçerik Açıklama):</label>
+                    <textarea class="form-control" id="message-text" name="description">@Model.siteAyar.description</textarea>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="message-text" class="col-form-label">Keywords(Anahtar Kelimeler):</label>
+                    <textarea class="form-control" id="message-text" name="keywords">@Model.siteAyar.keywords</textarea>
+                </div>
+                <br /> <br />
+                <button type="submit" class="btn btn-primary mx-auto text-center col-sm-2">Güncelle</button>
+                <div class="clear"> </div>
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+}

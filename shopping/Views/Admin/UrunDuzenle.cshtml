@@ -1,0 +1,336 @@
+﻿@using shopping.Models
+@model UrunDuzenleViewModel
+@{
+    ViewBag.Title = "Ürün Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@if (TempData["UrunEklendi"] != null)
+{
+
+    <script>
+        Swal.fire("Urun Ekleme", "Başarılı", "success")
+    </script>
+}
+
+@if (TempData["ResimHata"] != null)
+{
+
+    <script>
+        Swal.fire("Resim Yükleme Alanı ", "Boş Bırakılamaz", "error")
+    </script>
+}
+
+@if (TempData["UrunMevcut"] != null)
+{
+
+    <script>
+        Swal.fire("Aynı Ürün Mevcut", "Lütfen Kontrol Ediniz", "error")
+    </script>
+}
+
+@using (Html.BeginForm("Duzenle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="hidden" class="form-control" name="urunID" required="" value="@Model.Urun.urunID">
+    <div class="content-wthree2">
+        <div class="container">
+            <div class="row">
+                <p></p>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">Ürün İsmi:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="isim" required="" value="@Model.Urun.isim">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">Ürün Kodu:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="urunkodu" required="" value="@Model.Urun.urunkodu">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">Fiyat:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="fiyat" required="" value="@Model.Urun.fiyat">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label ">Link:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="link" value="@Model.Urun.satin_al">
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="message-text" class="col-form-label">Açıklama:</label>
+                    <textarea class="form-control" id="message-text" name="aciklama">@Model.Urun.aciklama </textarea>
+                </div>
+
+                <div class="styled-input form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label">Kategori:</label>
+                    <select id="category1" required="" name="kategori">
+                        <option value="">Kategori*</option>
+
+                        @foreach (var item in Model.kategorilers)
+                        {
+                            if (item.kategoriID == Model.Urun.kategoriID)
+                            {
+                                <option value="@item.kategoriID" selected>@item.adi</option>
+                            }
+                            else
+                            {
+                                <option value="@item.kategoriID">@item.adi</option>
+                            }
+
+                        }
+
+                    </select>
+                    <span></span>
+                </div>
+
+                <div class="styled-input form-group col-sm-3">
+                    <label for="recipient-name" class="col-form-label">Kategori kodu:</label>
+                    <select id="category1" required="" name="kod">
+                        <option value="">Kategori*</option>
+
+                        @foreach (var item in Model.kategorilers)
+                        {
+                            if (item.kategoriID == Model.Urun.kategoriID)
+                            {
+                                <option value="@item.etiket" selected>@item.etiket</option>
+                            }
+                            else
+                            {
+                                <option value="@item.etiket">@item.etiket</option>
+                            }
+
+                        }
+
+                    </select>
+                    <span></span>
+                </div>
+
+                <div class="content-wthree2 form-group col-sm-3">
+                    <div class="grid-w3layouts1">
+                        <div class="w3-agile1">
+                            <label class="rating">Aktif<span>*</span></label>
+                            <ul>
+                                @if (Model.Urun.aktif == true)
+                                {
+                                    <li>
+                                        <input type="radio" id="a-option" value="true" name="aktif" checked>
+                                        <label for="a-option">Aktif</label>
+                                        <div class="check"></div>
+                                    </li>
+
+                                    <li>
+                                        <input type="radio" id="b-option" value="false" name="aktif">
+                                        <label for="b-option">Pasif</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <input type="radio" id="a-option" value="true" name="aktif">
+                                        <label for="a-option">Aktif</label>
+                                        <div class="check"></div>
+                                    </li>
+
+                                    <li>
+                                        <input type="radio" id="b-option" value="false" name="aktif" checked>
+                                        <label for="b-option">Pasif</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+                                }
+
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="content-wthree2 form-group col-sm-3">
+                    <div class="grid-w3layouts1">
+                        <div class="w3-agile1">
+                            <label class="rating">Stok<span>*</span></label>
+                            <ul>
+                                @if (Model.Urun.stok == true)
+                                {
+                                    <li>
+                                        <input type="radio" id="a-option" value="true" name="stok" checked>
+                                        <label for="a-option">Var</label>
+                                        <div class="check"></div>
+                                    </li>
+
+                                    <li>
+                                        <input type="radio" id="b-option" value="false" name="stok">
+                                        <label for="b-option">Yok</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <input type="radio" id="a-option" value="true" name="stok">
+                                        <label for="a-option">Var</label>
+                                        <div class="check"></div>
+                                    </li>
+
+                                    <li>
+                                        <input type="radio" id="b-option" value="false" name="stok" checked>
+                                        <label for="b-option">Yok</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+                                }
+
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                @if (Model.Urun.kapakresim == null || Model.Urun.kapakresim == "")
+                {
+                    <div class="form-group col-sm-12">
+                        <label for="recipient-name" class="col-form-label">Kapak Resim(1000x1000):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="kapakresim" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-12">
+                        <label for="recipient-name" class="col-form-label">Kapak Resim(1000x1000):&nbsp; </label>
+                        <img src="@Model.Urun.kapakresim" name="kapakresim" alt="image" width="100" height="100">
+                        <input type="file" name="kapakresim" />
+                    </div>
+                }
+                <br />
+                @if (Model.Urun.aciklamaresim == null || Model.Urun.aciklamaresim == "")
+                {
+                    <div class="form-group col-sm-12">
+                        <label for="recipient-name" class="col-form-label">Açıklama Resim(1000x1000):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="aciklamaresim" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-12">
+                        <label for="recipient-name" class="col-form-label">Açıklama Resim(890x365):&nbsp; </label>
+                        <img src="@Model.Urun.aciklamaresim" name="aciklamaresim" alt="image" width="100" height="100">                        
+                        <input type="file" name="aciklamaresim" />
+                    </div>
+                }
+                <br />
+                @if (Model.Urun.resim1 == null || Model.Urun.resim1 == "")
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 1(1000x1000):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="resim1" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 1(1000x1000):&nbsp; </label>
+                        <img src="@Model.Urun.resim1" name="resim1" alt="image" width="100" height="100">
+                        <input type="file" name="resim1" />
+                    </div>
+                }
+                <br />
+                @if (Model.Urun.resim2 == null || Model.Urun.resim2 == "")
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 2(1000x1000):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="resim2" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 2(1000x1000):&nbsp; </label>
+                        <img src="@Model.Urun.resim2" name="resim" alt="image" width="100" height="100">
+                        <input type="file" name="resim2" />
+                    </div>
+                }
+                <br />
+                @if (Model.Urun.resim3 == null || Model.Urun.resim3 == "")
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 3(1000x1000):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="resim3" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 3(1000x1000):&nbsp; </label>
+                        <img src="@Model.Urun.resim3" name="resim" alt="image" width="100" height="100">
+                        <input type="file" name="resim3" />
+                    </div>
+                }
+                <br />
+                @if (Model.Urun.resim4 == null || Model.Urun.resim4 == "")
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 4(1000x1000):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="resim4" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 4(1000x1000):&nbsp; </label>
+                        <img src="@Model.Urun.resim4" name="resim" alt="image" width="100" height="100">
+                        <input type="file" name="resim4" />
+                    </div>
+                }
+                <br />
+                @if (Model.Urun.resim5 == null || Model.Urun.resim5 == "")
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 5(1000x1000):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="resim5" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 5(1000x1000):&nbsp; </label>
+                        <img src="@Model.Urun.resim5" name="resim" alt="image" width="100" height="100">
+                        <input type="file" name="resim5" />
+                    </div>
+                }
+                <br />
+                @if (Model.Urun.resim6 == null || Model.Urun.resim6 == "")
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 6(1000x1000):&nbsp; </label>
+                        <i class="text-red fas fa-times"></i>
+                        <input type="file" name="resim6" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-sm-6">
+                        <label for="recipient-name" class="col-form-label">Resim 6(1000x1000):&nbsp; </label>
+                        <img src="@Model.Urun.resim6" name="resim" alt="image" width="100" height="100">
+                        <input type="file" name="resim6" />
+                    </div>
+                }
+                <br /> <br />
+
+
+                <p></p>
+
+                <button type="submit" class="btn btn-primary mx-auto text-center col-sm-2">Güncelle</button>
+                <div class="clear"> </div>
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+}

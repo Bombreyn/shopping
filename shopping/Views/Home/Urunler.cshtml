@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Ürünler";
+}
+
+@using shopping.App_Start
+@model shopping.Models.ViewModel
+
+<div class="project-sec style2">
+    <div class="container">
+        <div class="row">
+            @if (Proje.Aktif.SiteAyar.katalog != "" && Proje.Aktif.SiteAyar.katalog != null)
+            {
+                <div class="col-xs-12 text-center">
+                    <h3><a href="~/Content/Dosya/deneme.pdf" download="@Proje.Aktif.SiteAyar.site_adi Katalog.pdf" align="">Katalog İndir</a> </h3>
+                </div>
+                <br />
+                <br />
+                <br />
+            }
+            <div class="col-xs-12 text-center">
+                <!-- project list of the page -->
+                <ul class="filter-list list-unstyled text-center">
+                    <li class="active"><a href="#">Hepsi</a></li>
+                    @foreach (var item in Model.kategorilers)
+                    {
+                        if (item.aktif == false)
+                        {
+
+                        }
+                        else
+                        {
+                            <li><a href="#" data-filter=".@item.etiket">@item.adi</a></li>
+
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- project holder of the page -->
+                <div class="project-holder">
+                    <!-- col of the page -->
+                    @foreach (var item2 in Model.uruns)
+                    {
+                        if (item2.aktif == true && item2.Kategoriler.aktif == true)
+                        {
+                    <div class="col overlay @item2.kod">
+                        @if (item2.kapakresim == null || item2.kapakresim == "")
+                        {
+                            <img src="~/Content/images/resim/resimyok.png" alt="image description" class="img-responsive">
+                        }
+                        else
+                        {
+                            <img src="@item2.kapakresim" alt="image description" class="img-responsive">
+                        }
+
+                        <h4 class="title text-center">@item2.isim</h4>
+                        @if (item2.fiyat == null || item2.fiyat == "" || item2.fiyat == " ")
+                        {
+                            <h4 class="title text-center"></h4>
+                        }
+                        else
+                        {
+                            <h4 class="title text-center">@item2.fiyat ₺</h4>
+
+                        }
+                        <div class="over text-center">
+                            <strong class="title text-uppercase"><a href="/Urun/@seo.Seo.AdresDuzenle(item2.Kategoriler.adi)/@seo.Seo.AdresDuzenle(item2.isim)-@item2.urunID">İncele</a></strong>
+                            <span class="sub-title">@item2.Kategoriler.adi</span>
+                        </div>
+                    </div>
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
